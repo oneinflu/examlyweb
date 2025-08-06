@@ -1,4 +1,3 @@
-"use client";
 
 import { notFound } from "next/navigation";
 import { use } from "react";
@@ -7,7 +6,8 @@ import FooterSection from "@/components/sections/footer/5-columns";
 import Image from "next/image";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+// Remove this line - framer-motion not compatible with server components
+// import { motion } from "framer-motion";
 import Glow from "@/components/ui/glow";
 
 import ExamlyFAQ from "@/components/sections/faq/examly";
@@ -23,6 +23,12 @@ type ExamPrepPageProps = {
 };
 
 const validCourses = ["cma", "cpa", "ea"] as const;
+
+export async function generateStaticParams() {
+  return validCourses.map((course) => ({
+    course,
+  }));
+}
 
 const courseContent = {
   cma: {
@@ -111,48 +117,52 @@ function FeatureLeft({ title, description, imageSrc, imageAlt }: {
   imageAlt: string;
 }) {
   return (
-    <Section className="relative max-md:mb-16 max-md:overflow-hidden max-md:border-b">
-      <div className="relative z-10 mx-auto flex max-w-container flex-col items-center gap-12 md:flex-row md:items-start lg:gap-24">
-        <motion.div 
-          initial={{ x: -100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="left-0 top-32 flex w-full flex-col items-start gap-4 py-4 text-left sm:gap-8 md:sticky md:py-12 md:w-1/2"
-        >
-          <h1 className="relative z-10 inline-block max-w-[920px] text-balance bg-gradient-to-r from-foreground to-foreground bg-clip-text text-4xl font-semibold text-transparent drop-shadow-2xl sm:text-5xl sm:leading-tight md:text-5xl md:leading-tight lg:text-6xl lg:leading-tight dark:to-muted-foreground">
-            {title}
-          </h1>
-          <div className="text-md relative z-10 flex max-w-[620px] flex-col gap-4 text-balance font-medium text-muted-foreground sm:text-lg">
-            {description.map((desc, index) => (
-              <p key={index}>{desc}</p>
-            ))}
+    <Section className="py-20 lg:py-32">
+      <div className="container mx-auto max-w-container">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Text Content */}
+          <div className="space-y-8 lg:pr-8">
+            <div className="space-y-6">
+              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight">
+                {title}
+              </h1>
+              <div className="space-y-4">
+                {description.map((paragraph, index) => (
+                  <p key={index} className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button size="lg" className="text-lg px-8 py-3">
+                Start Learning
+              </Button>
+              <Button variant="outline" size="lg" className="text-lg px-8 py-3">
+                View Demo
+              </Button>
+            </div>
           </div>
-          <div className="flex gap-4 mt-4">
-            <Button variant="default" className="rounded-full px-6" asChild>
-              <a href="#">Try it for free</a>
-            </Button>
-            <Button variant="outline" className="rounded-full px-6" asChild>
-              <a href="#">View Comparison</a>
-            </Button>
+          
+          {/* Image Container */}
+          <div className="relative lg:pl-8">
+            <div className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-transparent rounded-2xl p-8 lg:p-12">
+              <div className="relative aspect-[4/3] w-full max-w-lg mx-auto">
+                <Image
+                  src={imageSrc}
+                  alt={imageAlt}
+                  fill
+                  className="object-contain rounded-lg"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority
+                />
+              </div>
+              {/* Background decoration */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl" />
+              <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 rounded-3xl blur-xl opacity-50" />
+            </div>
           </div>
-        </motion.div>
-        <motion.div 
-          initial={{ x: 100, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 w-full md:w-3/4"
-        >
-          <div className="relative">
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              width={900}
-              height={600}
-              className="relative z-10 rounded-lg shadow-xl"
-            />
-            <Glow variant="center" className="opacity-30" />
-          </div>
-        </motion.div>
+        </div>
       </div>
     </Section>
   );

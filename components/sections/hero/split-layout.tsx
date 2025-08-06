@@ -4,11 +4,11 @@ import { Button } from "../../ui/button";
 import { Section } from "../../ui/section";
 import Glow from "../../ui/glow";
 import Image from "next/image";
-import { useTheme } from "next-themes";
-import { ArrowRightIcon, TrendingUpIcon } from "lucide-react";
+
+import { ArrowRightIcon } from "lucide-react";
 
 export default function SplitLayoutHero() {
-  const { resolvedTheme } = useTheme();
+ 
   
   return (
     <Section className="relative overflow-hidden">

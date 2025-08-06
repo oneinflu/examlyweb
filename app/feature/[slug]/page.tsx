@@ -17,6 +17,13 @@ const validFeatureSlugs = [
   "offline-access"
 ];
 
+// ADD THIS FUNCTION - Required for static export
+export async function generateStaticParams() {
+  return validFeatureSlugs.map((slug) => ({
+    slug: slug,
+  }));
+}
+
 // Enhanced feature content with detailed sections
 const featureContent = {
   "exam-simulation": {
