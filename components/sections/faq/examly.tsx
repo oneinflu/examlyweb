@@ -56,7 +56,7 @@ export default function ExamlyFAQ() {
     <Section>
       <div className="mx-auto flex max-w-container flex-col md:flex-row md:items-start gap-12">
           <div className="md:w-1/2">
-          <h2 className="text-3xl font-semibold sm:text-5xl mb-8">
+          <h2 className="text-primary  text-3xl font-semibold sm:text-5xl mb-8">
             Frequently Asked Questions
           </h2>
           <p className="text-md max-w-[580px] text-muted-foreground">

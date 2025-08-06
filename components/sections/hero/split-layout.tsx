@@ -17,11 +17,10 @@ export default function SplitLayoutHero() {
           {/* Left Content - Animate from left */}
           <div className="flex flex-col justify-center space-y-8 animate-slide-in-left">
             <div className="space-y-6">
-              <h1 className="text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl">
-                Stay ahead of the{" "}
-                <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+              <h1 className="text-primary text-4xl font-bold leading-tight text-foreground sm:text-5xl lg:text-6xl">
+                Stay ahead of the 
                   curve
-                </span>{" "}
+               
                 with our forward-thinking
               </h1>
               <p className="text-lg text-muted-foreground max-w-lg">

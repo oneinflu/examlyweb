@@ -22,7 +22,7 @@ export default function ExamlyHero() {
         {/* Title Section - 8 columns with 4 blank */}
         <div className="grid grid-cols-12 gap-8 mb-12">
           <div className="col-span-12 lg:col-span-8 space-y-6">
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight">
+            <h1 className="text-primary  text-3xl font-semibold leading-tight sm:text-5xl sm:leading-tight">
               Ace Your CPA, CMA, ACCA, and EA Exams with Examly
             </h1>
             <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
