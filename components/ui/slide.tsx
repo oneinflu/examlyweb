@@ -1,12 +1,12 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Plus, ArrowUpRight } from "lucide-react";
-import Link from "next/link";
+
 
 const Slide = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & { isExpanded?: boolean }
->(({ className, isExpanded, ...props }, ref) => (
+>(({ className,  ...props }, ref) => (
   <div
     ref={ref}
     className={cn(

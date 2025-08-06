@@ -2,7 +2,7 @@
 
 import { Section } from "../../ui/section";
 import Image from "next/image";
-import Glow from "../../ui/glow";
+
 import { useTheme } from "next-themes";
 
 export default function FeatureStickyRight() {

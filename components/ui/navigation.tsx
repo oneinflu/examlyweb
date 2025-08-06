@@ -17,39 +17,39 @@ import LaunchUI from "../logos/launch-ui";
 
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
+    title: "Personalized Learning Paths",
+    href: "/feature/personalized-learning",
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+      "AI-powered schedules tailored to your strengths and exam goals.",
   },
   {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
+    title: "Real Exam Simulations",
+    href: "/feature/exam-simulation",
     description:
-      "For sighted users to preview content available behind a link.",
+      "Mock tests that replicate the real exam experience for confidence.",
   },
   {
-    title: "Progress",
-    href: "/docs/primitives/progress",
+    title: "Live Expert-Led Classes",
+    href: "/feature/live-classes",
     description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "Interactive sessions with industry mentors for deep learning.",
   },
   {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
+    title: "Self-Assessment & Analytics",
+    href: "/feature/self-assessment",
+    description: "Track progress with detailed reports and performance insights.",
   },
   {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
+    title: "Engaged Learning Community",
+    href: "/feature/learning-community",
     description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+      "Collaborate, share strategies, and stay motivated with peers.",
   },
   {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
+    title: "Offline Access Anywhere",
+    href: "/feature/offline-access",
     description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      "Download classes and notes to study anytime, anywhere, even without the internet.",
   },
 ];
 
@@ -57,6 +57,13 @@ export default function Navigation() {
   return (
     <NavigationMenu className="hidden md:flex">
       <NavigationMenuList>
+         <NavigationMenuItem>
+          <Link href="/"  passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Home
+            </NavigationMenuLink>
+          </Link>
+        </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Exam Prep</NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -65,7 +72,7 @@ export default function Navigation() {
                 <NavigationMenuLink asChild>
                   <a
                     className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/30 to-muted/10 p-6 no-underline outline-none focus:shadow-md"
-                    href="/"
+                    href=""
                   >
                     <LaunchUI />
                     <div className="mb-2 mt-4 text-lg font-medium">
@@ -77,13 +84,14 @@ export default function Navigation() {
                   </a>
                 </NavigationMenuLink>
               </li>
-              <ListItem href="/" title="CMA Exam Prep">
+              
+              <ListItem href="/cma" title="CMA Exam Prep">
                 Ace the CMA exam with smart, focused prep.
               </ListItem>
-              <ListItem href="/" title="CPA Exam Prep">
-                 Ace the CPA exam with smart, focused prep.
+              <ListItem href="/cpa" title="CPA Exam Prep">
+                Ace the CPA exam with smart, focused prep.
               </ListItem>
-              <ListItem href="/" title="EA Exam Prep">
+              <ListItem href="/ea" title="EA Exam Prep">
                 Ace the EA exam with smart, focused prep.
               </ListItem>
             </ul>
@@ -94,26 +102,26 @@ export default function Navigation() {
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href="/"
-                >
-                  {component.description}
-                </ListItem>
-              ))}
+  <ListItem
+    key={component.title}
+    title={component.title}
+    href={component.href}
+  >
+    {component.description}
+  </ListItem>
+))}
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
+          <Link href="/"  passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Resources
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/" legacyBehavior passHref>
+          <Link href="/become-partner"  passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
               Become a partner
             </NavigationMenuLink>

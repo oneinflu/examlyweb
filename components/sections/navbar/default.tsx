@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import Navigation from "../../ui/navigation";
 import { Button } from "../../ui/button";
 import {

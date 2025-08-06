@@ -1,13 +1,13 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 "use client";
 
 import { useTheme } from "next-themes";
 import { Button } from "../../ui/button";
 import { Section } from "../../ui/section";
-import Github from "../../logos/github";
+
 import Glow from "../../ui/glow";
 import { Mockup, MockupFrame } from "../../ui/mockup";
 import Image from "next/image";
-import { SocialStats } from "../../ui/social-stats";
 
 export default function Hero() {
   const { resolvedTheme } = useTheme();
@@ -41,7 +41,7 @@ export default function Hero() {
             Stay ahead of the curve with our forward-thinking
           </h1>
           <p className="text-md max-w-[550px] animate-appear font-medium text-muted-foreground opacity-0 delay-100 lg:text-xl">
-            Examly is built for modern learners who demand flexibility, affordability, and smarter study tools. With 3M+ CPA candidates already trusting Examly, we're not just another prep provider - we're your edge to outperform the competition.
+            Examly is built for modern learners who demand flexibility, affordability, and smarter study tools. With 3M+ CPA candidates already trusting Examly, we&rsquo;re not just another prep provider - we&rsquo;re your edge to outperform the competition.
           </p>
           <div className="flex animate-appear gap-4 opacity-0 delay-300">
             <Button variant="default" size="lg" asChild>
@@ -49,7 +49,7 @@ export default function Hero() {
             </Button>
             <Button variant="glow" size="lg" asChild>
               <a href="/">
-                View Comparision
+                View Comparison
               </a>
             </Button>
           </div>

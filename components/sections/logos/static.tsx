@@ -1,4 +1,4 @@
-import ReactLogo from "../../logos/react";
+
 import Logo from "../../ui/logo";
 import { Section } from "../../ui/section";
 import Catalog from "../../logos/catalog";

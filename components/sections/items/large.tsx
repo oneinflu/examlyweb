@@ -2,11 +2,11 @@ import {
   BlocksIcon,
   EclipseIcon,
   FastForwardIcon,
-  LanguagesIcon,
+  
   MonitorSmartphoneIcon,
   RocketIcon,
   ScanFaceIcon,
-  SquarePenIcon,
+  
 } from "lucide-react";
 import {
   Item,

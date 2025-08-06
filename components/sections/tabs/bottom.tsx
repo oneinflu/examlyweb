@@ -8,8 +8,6 @@ import Glow from "../../ui/glow";
 import { useTheme } from "next-themes";
 import {
   BlocksIcon,
-  PaletteIcon,
-  RocketIcon,
   SquarePenIcon,
 } from "lucide-react";
 

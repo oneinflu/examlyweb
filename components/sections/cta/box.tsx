@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import { Section } from "../../ui/section";
 import { Button } from "../../ui/button";
 import { Badge } from "../../ui/badge";

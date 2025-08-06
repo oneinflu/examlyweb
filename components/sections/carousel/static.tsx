@@ -55,17 +55,6 @@ const slides = [
 
 export default function CarouselStatic() {
   const { resolvedTheme } = useTheme();
-  const [expandedSlides, setExpandedSlides] = React.useState<boolean[]>(
-    new Array(slides.length).fill(false),
-  );
-
-  const toggleSlide = (index: number) => {
-    setExpandedSlides((prev) => {
-      const newState = [...prev];
-      newState[index] = !newState[index];
-      return newState;
-    });
-  };
 
   return (
     <Section className="w-full overflow-hidden">
@@ -93,10 +82,9 @@ export default function CarouselStatic() {
                 key={index}
                 className="flex basis-4/5 pl-4 sm:basis-2/3 lg:basis-5/12 xl:basis-1/3"
               >
-                <Slide className="grow" isExpanded={expandedSlides[index]}>
+                <Slide className="grow">
                   <SlideVisual
                     className="fade-bottom-lg min-h-[300px] items-end overflow-hidden"
-                    isExpanded={expandedSlides[index]}
                   >
                     <Image
                       src={
@@ -114,7 +102,7 @@ export default function CarouselStatic() {
                       className="scale-[2.5] opacity-20 transition-opacity duration-300 group-hover:opacity-30"
                     />
                   </SlideVisual>
-                  <SlideContent isExpanded={expandedSlides[index]}>
+                  <SlideContent>
                     <SlideDescription>{slide.tagline}</SlideDescription>
                     <SlideTitle className="text-balance">
                       {slide.title}

@@ -6,10 +6,10 @@ import {
 } from "../../ui/footer";
 import LaunchUI from "../../logos/launch-ui";
 import Link from "next/link";
-import Github from "../../logos/github";
+
 import X from "../../logos/x";
 import Discord from "../../logos/discord";
-import { Linkedin } from "lucide-react";
+
 
 export default function FooterSection() {
   return (
@@ -76,7 +76,7 @@ export default function FooterSection() {
                 Call Us
               </a>
               <a
-                href="/"
+                href=""
                 className="text-sm text-muted-foreground"
               >
                 Raise Ticket
@@ -84,18 +84,18 @@ export default function FooterSection() {
             </FooterColumn>
             <FooterColumn>
               <h3 className="text-md pt-1 font-semibold">Legal</h3>
-              <a href="#" className="text-sm text-muted-foreground">
+              <Link href="/privacy-policy" className="text-sm text-muted-foreground">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-sm text-muted-foreground">
+              </Link>
+              <Link href="/terms" className="text-sm text-muted-foreground">
                 Terms of Service
-              </a>
-              <a href="#" className="text-sm text-muted-foreground">
-                Copyright
-              </a>
-              <a href="#" className="text-sm text-muted-foreground">
-                Cookie Policy
-              </a>
+              </Link>
+              <Link href="/copyright-trademarks" className="text-sm text-muted-foreground">
+                Copyright & Trademarks
+              </Link>
+              <Link href="/return-policy" className="text-sm text-muted-foreground">
+                Return Policy
+              </Link>
             </FooterColumn>
           </FooterContent>
           <FooterBottom className="border-0">

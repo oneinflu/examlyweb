@@ -20,8 +20,8 @@ export default function Items() {
   return (
     <Section>
       <div className="mx-auto flex max-w-container flex-col items-center gap-6 sm:gap-20">
-        <h2 className="max-w-[560px] text-center text-3xl font-semibold leading-tight sm:text-5xl sm:leading-tight">
-          Everything you need. Nothing you don&apos;t.
+        <h2 className="max-w-[650px] text-center text-3xl font-semibold leading-tight sm:text-5xl sm:leading-tight">
+         Built to Support Every Learner
         </h2>
         <div className="grid auto-rows-fr grid-cols-2 gap-0 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
           <Item>
@@ -29,10 +29,10 @@ export default function Items() {
               <ItemIcon>
                 <ScanFaceIcon className="h-5 w-5 stroke-1 text-brand" />
               </ItemIcon>
-              Accessibility first
+             AI-Powered Tutor
             </ItemTitle>
             <ItemDescription>
-              Fully WCAG 2.0 compliant, made with best a11y practices
+            Get instant help anytime, anywhere
             </ItemDescription>
           </Item>
           <Item>
@@ -40,10 +40,10 @@ export default function Items() {
               <ItemIcon>
                 <MonitorSmartphoneIcon className="h-5 w-5 stroke-1 text-brand" />
               </ItemIcon>
-              Responsive design
+              Mock Test Simulator
             </ItemTitle>
             <ItemDescription>
-              Looks and works great on any device and screen size
+             Real exam feel with timer + analytics
             </ItemDescription>
           </Item>
           <Item>
@@ -51,10 +51,10 @@ export default function Items() {
               <ItemIcon>
                 <EclipseIcon className="h-5 w-5 stroke-1 text-brand" />
               </ItemIcon>
-              Light and dark mode
+              Self-Assessment Tools
             </ItemTitle>
             <ItemDescription>
-              Seamless switching between color schemes, 6 themes included
+              Visualize your progress over time
             </ItemDescription>
           </Item>
           <Item>
@@ -62,10 +62,10 @@ export default function Items() {
               <ItemIcon>
                 <BlocksIcon className="h-5 w-5 stroke-1 text-brand" />
               </ItemIcon>
-              Easy to customize
+              EExpert-Led Classes 
             </ItemTitle>
             <ItemDescription>
-              Flexible options to match your product or brand
+              Learn from top faculty in every subject
             </ItemDescription>
           </Item>
           <Item>
@@ -73,10 +73,10 @@ export default function Items() {
               <ItemIcon>
                 <FastForwardIcon className="h-5 w-5 stroke-1 text-brand" />
               </ItemIcon>
-              Top-level performance
+              Gamified Streaks
             </ItemTitle>
             <ItemDescription>
-              Made for lightning-fast load times and smooth interactions
+              Daily learning, rewards & progress bar
             </ItemDescription>
           </Item>
           <Item>
@@ -84,10 +84,10 @@ export default function Items() {
               <ItemIcon>
                 <RocketIcon className="h-5 w-5 stroke-1 text-brand" />
               </ItemIcon>
-              Production ready
+              Homework & Class Tests 
             </ItemTitle>
             <ItemDescription>
-              Thoroughly tested and launch-prepared
+             Created by tutors, auto-assessed
             </ItemDescription>
           </Item>
           <Item>
@@ -95,10 +95,10 @@ export default function Items() {
               <ItemIcon>
                 <LanguagesIcon className="h-5 w-5 stroke-1 text-brand" />
               </ItemIcon>
-              Made for localisation
+              Offline Mode
             </ItemTitle>
             <ItemDescription>
-              Easy to implement support for multiple languages and regions
+              Learn even without internet
             </ItemDescription>
           </Item>
           <Item>
@@ -106,10 +106,10 @@ export default function Items() {
               <ItemIcon>
                 <SquarePenIcon className="h-5 w-5 stroke-1 text-brand" />
               </ItemIcon>
-              CMS friendly
+              Peer Forum
             </ItemTitle>
             <ItemDescription>
-              Built to work with your any headless content management system
+             Ask doubts, answer, collaborate
             </ItemDescription>
           </Item>
         </div>

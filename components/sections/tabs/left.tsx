@@ -9,7 +9,7 @@ import { useTheme } from "next-themes";
 import {
   BlocksIcon,
   PaletteIcon,
-  RocketIcon,
+ 
   SquarePenIcon,
 } from "lucide-react";
 
@@ -17,23 +17,23 @@ export default function TabsLeft() {
   const { resolvedTheme } = useTheme();
   let sectionSrc: string;
   let contentSrc: string;
-  let customizeSrc: string;
+  
 
   switch (resolvedTheme) {
     case "light":
       sectionSrc = "/home.png";
       contentSrc = "/home.png";
-      customizeSrc = "/app-settings-light.png";
+     
       break;
     case "dark":
       sectionSrc = "/prep.png";
       contentSrc = "/prep.png";
-      customizeSrc = "/app-settings-dark.png";
+     
       break;
     default:
       sectionSrc = "/home.png";
       contentSrc = "/home.png";
-      customizeSrc = "/app-settings-dark.png";
+     
       break;
   }
 
