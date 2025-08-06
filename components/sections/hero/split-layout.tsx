@@ -99,7 +99,7 @@ export default function SplitLayoutHero() {
                     <div className="h-1 w-8 bg-white/60"></div>
                     Let&rsquo;s move forward in life
                   </div>
-                  <h3 className="text-2xl font-bold leading-tight">
+                  <h3 className="text-white text-2xl font-bold leading-tight">
                     Drive your career forward, not your expenses.
                   </h3>
                 </div>
