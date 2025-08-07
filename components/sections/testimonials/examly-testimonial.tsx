@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Section } from "../../ui/section";
 import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";

@@ -15,6 +15,8 @@ import ExamlyCTA from "@/components/sections/cta/examly";
 import BentoGrid from "@/components/sections/bento-grid/2-rows-top";
 import DashboardCarousel from "@/components/sections/carousel/dashboard-carousel";
 import PreparationProcess from "@/components/sections/feature/preparation-process";
+import { Pricing3ColsSubscription } from "@/components/sections/pricing/3-cols-subscription";
+import ExamlyTestimonial from "@/components/sections/testimonials/examly-testimonial";
 
 type ExamPrepPageProps = {
   params: Promise<{
@@ -34,8 +36,8 @@ const courseContent = {
   cma: {
     title: "CMA Exam Preparation",
     description: "Comprehensive study materials and practice tests for the Certified Management Accountant exam.",
-    heroImage: "/macbook.png",
-    featureTitle: "Master the CMA Exam with Confidence",
+    heroImage: "/macbook.svg",
+    featureTitle: "Smartest Prep for CMA®",
     featureDescription: [
       "Our CMA exam prep provides everything you need to pass on your first attempt.",
       "Study smarter with adaptive learning technology tailored to your strengths and weaknesses."
@@ -102,7 +104,9 @@ export default function ExamPrepPage({ params }: ExamPrepPageProps) {
       />
       <BentoGrid />
       <DashboardCarousel />
-      <PreparationProcess />
+    <Pricing3ColsSubscription course={courseSlug} />
+    <ExamlyTestimonial />
+   
       <ExamlyFAQ />
       <ExamlyCTA />
       <FooterSection />
@@ -118,48 +122,60 @@ function FeatureLeft({ title, description, imageSrc, imageAlt }: {
 }) {
   return (
     <Section className="py-20 lg:py-32">
-      <div className="container mx-auto max-w-container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Text Content */}
-          <div className="space-y-8 lg:pr-8">
-            <div className="space-y-6">
-              <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight tracking-tight">
-                {title}
-              </h1>
-              <div className="space-y-4">
-                {description.map((paragraph, index) => (
-                  <p key={index} className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                    {paragraph}
-                  </p>
-                ))}
+      <div className="relative overflow-hidden">
+        <div className="container mx-auto max-w-container">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Text Content - Takes up 5 columns */}
+            <div className="lg:col-span-5 space-y-8 animate-in slide-in-from-left-8 duration-1000 ease-out">
+              <div className="space-y-6">
+                <h1 className="text-6xl font-bold animate-in fade-in-0 slide-in-from-left-4 duration-1000 delay-200 ease-out">
+                  {title}
+                </h1>
+                <div className="space-y-4 animate-in fade-in-0 slide-in-from-left-4 duration-1000 delay-400 ease-out">
+                  {description.map((paragraph, index) => (
+                    <p key={index} className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in-0 slide-in-from-left-4 duration-1000 delay-600 ease-out">
+                <Button size="lg" className="text-lg px-8 py-3">
+                  Start Learning
+                </Button>
+                <Button variant="outline" size="lg" className="text-lg px-8 py-3">
+                  View Demo
+                </Button>
               </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="text-lg px-8 py-3">
-                Start Learning
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-3">
-                View Demo
-              </Button>
-            </div>
-          </div>
-          
-          {/* Image Container */}
-          <div className="relative lg:pl-8">
-            <div className="relative bg-gradient-to-br from-primary/10 via-primary/5 to-transparent rounded-2xl p-8 lg:p-12">
-              <div className="relative aspect-[4/3] w-full max-w-lg mx-auto">
-                <Image
-                  src={imageSrc}
-                  alt={imageAlt}
-                  fill
-                  className="object-contain rounded-lg"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  priority
-                />
+            
+            {/* Image Container - Takes up 7 columns and extends beyond */}
+            <div className="lg:col-span-7 lg:col-start-6 animate-in slide-in-from-right-8 duration-1000 delay-300 ease-out">
+              <div className="relative lg:ml-8">
+                {/* Desktop: Image extends beyond container */}
+                <div className="hidden lg:block relative w-[calc(100%+25vw)] aspect-[4/3]">
+                  <Image
+                    src={imageSrc}
+                    alt={imageAlt}
+                    fill
+                    className="object-contain object-left animate-in zoom-in-95 duration-1000 delay-500 ease-out"
+                    sizes="75vw"
+                    priority
+                  />
+                </div>
+                
+                {/* Mobile: Normal contained image */}
+                <div className="lg:hidden relative aspect-[4/3] w-full max-w-lg mx-auto">
+                  <Image
+                    src={imageSrc}
+                    alt={imageAlt}
+                    fill
+                    className="object-contain animate-in zoom-in-95 duration-1000 delay-500 ease-out"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                  />
+                </div>
               </div>
-              {/* Background decoration */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl" />
-              <div className="absolute -inset-4 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 rounded-3xl blur-xl opacity-50" />
             </div>
           </div>
         </div>

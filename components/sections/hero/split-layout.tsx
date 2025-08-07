@@ -6,9 +6,32 @@ import Glow from "../../ui/glow";
 import Image from "next/image";
 
 import { ArrowRightIcon } from "lucide-react";
+import { Mockup, MockupFrame } from "@/components/ui/mockup";
+import { useTheme } from "next-themes";
 
 export default function SplitLayoutHero() {
- 
+ const { resolvedTheme } = useTheme();
+  let sectionSrc: string;
+  let contentSrc: string;
+  let customizeSrc: string;
+
+  switch (resolvedTheme) {
+    case "light":
+      sectionSrc = "/home.png";
+      contentSrc = "/prep.png";
+      customizeSrc = "/calender.png";
+      break;
+    case "dark":
+     sectionSrc = "/home.png";
+      contentSrc = "/prep.png";
+      customizeSrc = "/calender.png";
+      break;
+    default:
+      sectionSrc = "/home.png";
+      contentSrc = "/prep.png";
+      customizeSrc = "/calender.png";
+      break;
+  }
   
   return (
     <Section className="relative overflow-hidden">
@@ -115,10 +138,60 @@ export default function SplitLayoutHero() {
           </div>
         </div>
       </div>
-      
+         {/* <div className="group relative sm:px-24 mt-60">
+          <div className="relative left-[-24%] z-10 h-[24px]   transition-all delay-200 duration-700 ease-in-out group-hover:left-[-32%] group-hover:rotate-[-12deg] group-hover:skew-y-6">
+            <MockupFrame
+              className="animate-appear opacity-0 shadow-mockup delay-500"
+              size="small"
+            >
+              <Mockup type="responsive">
+                <Image
+                  src={sectionSrc}
+                  alt="Launch UI app screenshot"
+                  width={1248}
+                  height={765}
+                />
+              </Mockup>
+            </MockupFrame>
+          </div>
+          <div className="relative z-10 h-[24px]  transition-all delay-200 duration-700 ease-in-out group-hover:rotate-[-12deg] group-hover:skew-y-6">
+            <MockupFrame
+              className="animate-appear opacity-0 shadow-mockup delay-1000"
+              size="small"
+            >
+              <Mockup type="responsive">
+                <Image
+                  src={customizeSrc}
+                  alt="Launch UI app screenshot"
+                  width={1248}
+                  height={765}
+                />
+              </Mockup>
+            </MockupFrame>
+          </div>
+          <div className=" relative left-[32%] z-10  transition-all delay-200 duration-700 ease-in-out group-hover:left-[48%] group-hover:rotate-[-12deg] group-hover:skew-y-6">
+            <MockupFrame
+              className="animate-appear opacity-0 shadow-mockup delay-1500"
+              size="small"
+            >
+              <Mockup type="responsive">
+                <Image
+                  src={contentSrc}
+                  alt="Launch UI app screenshot"
+                  width={1248}
+                  height={765}
+                />
+              </Mockup>
+            </MockupFrame>
+          </div>
+        </div> */}
+        <Glow
+          variant="center"
+          className="mt-32 animate-appear-zoom opacity-0 delay-2000 lg:-mt-12"
+        />
       {/* Background Glow */}
       <div className="absolute inset-0 overflow-hidden">
-        <Glow variant="center" className="opacity-20" />
+        <Glow variant="center" className="opacity-80" />
       </div>
       
       {/* Custom CSS for animations */}

@@ -1,4 +1,5 @@
 "use client";
+import DashboardCarousel from "@/components/sections/carousel/dashboard-carousel";
 import ExamlyFAQ from "@/components/sections/faq/examly";
 import FeaturesGrid from "@/components/sections/feature/features-grid";
 import FooterSection from "@/components/sections/footer/5-columns";
@@ -12,8 +13,10 @@ export default function Home() {
    <>
    <Navbar />
    <SplitLayoutHero />
+
     <ExamlyHero />
   <FeaturesGrid />
+  <DashboardCarousel />
    <ExamlyTestimonial />
    
    <ExamlyFAQ /> 
