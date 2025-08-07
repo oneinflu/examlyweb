@@ -40,7 +40,7 @@ const courseConfigs: Record<string, CourseConfig> = {
     cta: {
       variant: "outline",
       label: "Learn More",
-      href: "/cma/essential",
+      href: "/cma/prep/essential",
     },
     features: [
       "CMA Part 1 & 2 HD video lectures",
@@ -60,7 +60,7 @@ const courseConfigs: Record<string, CourseConfig> = {
     cta: {
       variant: "default",
       label: "Learn More",
-      href: "/cma/pro",
+      href: "/cma/prep/pro",
     },
     features: [
       "Everything in Essential Plan",
@@ -107,7 +107,7 @@ const courseConfigs: Record<string, CourseConfig> = {
     cta: {
       variant: "outline",
       label: "Learn More",
-      href: "/cpa/essential",
+      href: "/cpa/prep/essential",
     },
     features: [
       "CMA Part 1 & 2 HD video lectures",
@@ -127,7 +127,7 @@ const courseConfigs: Record<string, CourseConfig> = {
     cta: {
       variant: "default",
       label: "Learn More",
-      href: "/cpa/pro",
+      href: "/cpa/prep/pro",
     },
     features: [
       "Everything in Essential Plan",
@@ -174,7 +174,7 @@ const courseConfigs: Record<string, CourseConfig> = {
     cta: {
       variant: "outline",
       label: "Learn More",
-      href: "/cma/essential",
+      href: "/cma/prep/essential",
     },
     features: [
       "CMA Part 1 & 2 HD video lectures",
@@ -194,7 +194,7 @@ const courseConfigs: Record<string, CourseConfig> = {
     cta: {
       variant: "default",
       label: "Learn More",
-      href: "/ea/pro",
+      href: "/ea/prep/pro",
     },
     features: [
       "Everything in Essential Plan",
