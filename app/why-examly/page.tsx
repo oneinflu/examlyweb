@@ -1,9 +1,11 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import Navbar from "@/components/sections/navbar/centered";
 import FooterSection from "@/components/sections/footer/5-columns";
 import { Section } from "@/components/ui/section";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { Check, X, AlertTriangle, Link } from "lucide-react";
 
 export default function WhyExamly() {
   return (
@@ -111,6 +113,355 @@ export default function WhyExamly() {
         </div>
       </Section>
       
+      {/* Comparison Table Section */}
+      <Section className="py-16 bg-muted/30">
+        <div className="container mx-auto max-w-container px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <Badge variant="outline" className="mb-6 px-4 py-2 bg-primary/10 border-primary/20 text-primary">
+              Comparison
+            </Badge>
+            <h2 className="text-3xl font-bold mb-4">How We Compare</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              See why Examly stands out from other exam preparation providers
+            </p>
+          </div>
+          
+          {/* Comparison Table */}
+          <div className="overflow-x-auto rounded-xl border border-border/50 bg-card shadow-sm">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-border/50">
+                  <th className="p-4 text-left font-semibold text-lg">Feature / Benefit</th>
+                  <th className="p-4 text-center font-semibold text-lg bg-primary/5 border-x border-border/50">
+                    <div className="flex flex-col items-center">
+                      <span className="text-primary">Examly</span>
+                    </div>
+                  </th>
+                  <th className="p-4 text-center font-semibold text-lg">
+                    <div className="flex flex-col items-center">
+                      <span>Becker</span>
+                    </div>
+                  </th>
+                  <th className="p-4 text-center font-semibold text-lg">
+                    <div className="flex flex-col items-center">
+                      <span>Gleim</span>
+                    </div>
+                  </th>
+                  <th className="p-4 text-center font-semibold text-lg">
+                    <div className="flex flex-col items-center">
+                      <span>UWorld</span>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* Pricing Row */}
+                <tr className="border-b border-border/50 hover:bg-muted/20 transition-colors">
+                  <td className="p-4 font-medium">Pricing</td>
+                  <td className="p-4 text-center bg-primary/5 border-x border-border/50">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-green-100 dark:bg-green-900/30">
+                        <Check className="w-5 h-5 text-green-600 dark:text-green-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-green-600 dark:text-green-400 font-medium">Best value, flexible plans</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-red-100 dark:bg-red-900/30">
+                        <X className="w-5 h-5 text-red-600 dark:text-red-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">High upfront costs</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-amber-100 dark:bg-amber-900/30">
+                        <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Moderate pricing</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-red-100 dark:bg-red-900/30">
+                        <X className="w-5 h-5 text-red-600 dark:text-red-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Premium pricing</span>
+                    </div>
+                  </td>
+                </tr>
+                
+                {/* Personalized Learning Paths Row */}
+                <tr className="border-b border-border/50 hover:bg-muted/20 transition-colors">
+                  <td className="p-4 font-medium">Personalized Learning Paths</td>
+                  <td className="p-4 text-center bg-primary/5 border-x border-border/50">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-green-100 dark:bg-green-900/30">
+                        <Check className="w-5 h-5 text-green-600 dark:text-green-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-green-600 dark:text-green-400 font-medium">AI-driven & adaptive</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-red-100 dark:bg-red-900/30">
+                        <X className="w-5 h-5 text-red-600 dark:text-red-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Static, less flexible</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-amber-100 dark:bg-amber-900/30">
+                        <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Limited customization</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-amber-100 dark:bg-amber-900/30">
+                        <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Some adaptive features</span>
+                    </div>
+                  </td>
+                </tr>
+                
+                {/* Exam Simulations Row */}
+                <tr className="border-b border-border/50 hover:bg-muted/20 transition-colors">
+                  <td className="p-4 font-medium">Exam Simulations</td>
+                  <td className="p-4 text-center bg-primary/5 border-x border-border/50">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-green-100 dark:bg-green-900/30">
+                        <Check className="w-5 h-5 text-green-600 dark:text-green-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-green-600 dark:text-green-400 font-medium">Full-length, realistic, task-based + essay</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-red-100 dark:bg-red-900/30">
+                        <X className="w-5 h-5 text-red-600 dark:text-red-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Basic simulations, no essays</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-amber-100 dark:bg-amber-900/30">
+                        <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Good but limited essay prep</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-amber-100 dark:bg-amber-900/30">
+                        <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Strong MCQ focus</span>
+                    </div>
+                  </td>
+                </tr>
+                
+                {/* Live Expert-Led Classes Row */}
+                <tr className="border-b border-border/50 hover:bg-muted/20 transition-colors">
+                  <td className="p-4 font-medium">Live Expert-Led Classes</td>
+                  <td className="p-4 text-center bg-primary/5 border-x border-border/50">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-green-100 dark:bg-green-900/30">
+                        <Check className="w-5 h-5 text-green-600 dark:text-green-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-green-600 dark:text-green-400 font-medium">Included, interactive & frequent</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-red-100 dark:bg-red-900/30">
+                        <X className="w-5 h-5 text-red-600 dark:text-red-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Extra cost, limited sessions</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-amber-100 dark:bg-amber-900/30">
+                        <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Few live classes</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-red-100 dark:bg-red-900/30">
+                        <X className="w-5 h-5 text-red-600 dark:text-red-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Mostly self-study</span>
+                    </div>
+                  </td>
+                </tr>
+                
+                {/* Offline Access Row */}
+                <tr className="border-b border-border/50 hover:bg-muted/20 transition-colors">
+                  <td className="p-4 font-medium">Offline Access Anywhere</td>
+                  <td className="p-4 text-center bg-primary/5 border-x border-border/50">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-green-100 dark:bg-green-900/30">
+                        <Check className="w-5 h-5 text-green-600 dark:text-green-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-green-600 dark:text-green-400 font-medium">Full offline mode on mobile</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-red-100 dark:bg-red-900/30">
+                        <X className="w-5 h-5 text-red-600 dark:text-red-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">No offline support</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-amber-100 dark:bg-amber-900/30">
+                        <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Partial offline content</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-amber-100 dark:bg-amber-900/30">
+                        <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Limited offline</span>
+                    </div>
+                  </td>
+                </tr>
+                
+                {/* Self-Assessment Row */}
+                <tr className="border-b border-border/50 hover:bg-muted/20 transition-colors">
+                  <td className="p-4 font-medium">Self-Assessment & Analytics</td>
+                  <td className="p-4 text-center bg-primary/5 border-x border-border/50">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-green-100 dark:bg-green-900/30">
+                        <Check className="w-5 h-5 text-green-600 dark:text-green-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-green-600 dark:text-green-400 font-medium">Deep insights & AI recommendations</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-amber-100 dark:bg-amber-900/30">
+                        <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Basic reports</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-amber-100 dark:bg-amber-900/30">
+                        <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Reports with limited insights</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-amber-100 dark:bg-amber-900/30">
+                        <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Good analytics, no AI</span>
+                    </div>
+                  </td>
+                </tr>
+                
+                {/* Customer Support Row */}
+                <tr className="border-b border-border/50 hover:bg-muted/20 transition-colors">
+                  <td className="p-4 font-medium">Customer Support</td>
+                  <td className="p-4 text-center bg-primary/5 border-x border-border/50">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-green-100 dark:bg-green-900/30">
+                        <Check className="w-5 h-5 text-green-600 dark:text-green-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-green-600 dark:text-green-400 font-medium">24/7 live chat & phone support</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-amber-100 dark:bg-amber-900/30">
+                        <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Business hours only</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-amber-100 dark:bg-amber-900/30">
+                        <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Email support</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-red-100 dark:bg-red-900/30">
+                        <X className="w-5 h-5 text-red-600 dark:text-red-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">Limited live support</span>
+                    </div>
+                  </td>
+                </tr>
+                
+                {/* Money-Back Guarantee Row */}
+                <tr className="hover:bg-muted/20 transition-colors">
+                  <td className="p-4 font-medium">Money-Back Guarantee</td>
+                  <td className="p-4 text-center bg-primary/5 border-x border-border/50">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-green-100 dark:bg-green-900/30">
+                        <Check className="w-5 h-5 text-green-600 dark:text-green-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-green-600 dark:text-green-400 font-medium">30-day full refund</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-red-100 dark:bg-red-900/30">
+                        <X className="w-5 h-5 text-red-600 dark:text-red-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">14-day limited refund</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-green-100 dark:bg-green-900/30">
+                        <Check className="w-5 h-5 text-green-600 dark:text-green-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">30-day refund</span>
+                    </div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <div className="flex flex-col items-center">
+                      <div className="p-1 rounded-full bg-red-100 dark:bg-red-900/30">
+                        <X className="w-5 h-5 text-red-600 dark:text-red-400" />
+                      </div>
+                      <span className="mt-1 text-sm text-muted-foreground">7-day refund</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div className="mt-8 text-center">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
+              See Our Plans
+            </Button>
+          </div>
+        </div>
+      </Section>
+      
       {/* Success Stories Section */}
       <Section className="py-16 bg-muted/30">
         <div className="container mx-auto max-w-container px-4 sm:px-6 lg:px-8">
@@ -182,9 +533,17 @@ export default function WhyExamly() {
               Join thousands of successful candidates who have passed their exams with Examly&apos;s comprehensive preparation programs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg">Explore CPA Prep</Button>
-              <Button size="lg" variant="outline">Explore CMA Prep</Button>
-              <Button size="lg" variant="outline">Explore EA Prep</Button>
+              <Button size="lg" asChild>
+                
+                  <a className="btn btn-primary btn-lg" href="/cpa">Explore CPA Prep </a>
+                
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                 <a className="btn btn-info btn-lg" href="/cma">Explore CMA Prep </a>
+              </Button>
+              <Button size="lg" variant="outline" asChild>
+                 <a className="btn btn-info btn-lg" href="/ea">Explore EA Prep </a>
+              </Button>
             </div>
           </div>
         </div>

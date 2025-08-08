@@ -69,7 +69,7 @@ export default function Navbar({
               <Link
                 href="/"
                 className="flex items-center gap-2 text-xl font-bold"
-                 passHref
+                passHref
               >
                 
                 {logo}
