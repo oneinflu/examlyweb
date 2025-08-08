@@ -6,10 +6,8 @@ import FooterSection from "@/components/sections/footer/5-columns";
 import Image from "next/image";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
-// Remove this line - framer-motion not compatible with server components
-// import { motion } from "framer-motion";
 
-
+import CourseHero from "@/components/sections/hero/course-hero";
 import ExamlyFAQ from "@/components/sections/faq/examly";
 import ExamlyCTA from "@/components/sections/cta/examly";
 import BentoGrid from "@/components/sections/bento-grid/2-rows-top";
@@ -17,6 +15,8 @@ import DashboardCarousel from "@/components/sections/carousel/dashboard-carousel
 
 import { Pricing3ColsSubscription } from "@/components/sections/pricing/3-cols-subscription";
 import ExamlyTestimonial from "@/components/sections/testimonials/examly-testimonial";
+import ExamFeatures from "@/components/sections/feature/exam-features";
+import { ExamPricing } from "@/components/sections/pricing/exam-pricing";
 
 type ExamPrepPageProps = {
   params: Promise<{
@@ -48,6 +48,8 @@ const courseContent = {
       "Expert-led video lectures",
       "Thousands of practice questions",
     ],
+    subtitle: "Master financial management & strategy with expert-led content.",
+    logoSrc: "/learning.svg"
   },
   cpa: {
     title: "CPA Exam Preparation",
@@ -64,6 +66,8 @@ const courseContent = {
       "Expert-led video lectures",
       "Thousands of practice questions",
     ],
+    subtitle: "Prepare for the CPA with realistic simulations and live coaching.",
+    logoSrc: "/simulation.svg"
   },
   ea: {
     title: "EA Exam Preparation",
@@ -80,9 +84,15 @@ const courseContent = {
       "Expert-led video lectures",
       "Thousands of practice questions",
     ],
+    subtitle: "Become an Enrolled Agent with comprehensive tax exam prep.",
+    logoSrc: "/offline.svg"
   },
 } as const;
 
+// Add this import at the top with the other imports
+import ExamHowItWorks from "@/components/sections/feature/exam-how-it-works";
+
+// Then in the return statement, add the component after ExamFeatures and before ExamPricing
 export default function ExamPrepPage({ params }: ExamPrepPageProps) {
   const resolvedParams = use(params);
   const courseSlug = resolvedParams.course?.split("-exam-prep")[0] as keyof typeof courseContent;
@@ -92,94 +102,32 @@ export default function ExamPrepPage({ params }: ExamPrepPageProps) {
   }
 
   const content = courseContent[courseSlug];
+  const examType = courseSlug.toUpperCase() as "CMA" | "CPA" | "EA";
 
   return (
     <>
       <Navbar />
-      <FeatureLeft 
-        title={content.featureTitle}
-        description={content.featureDescription}
-        imageSrc={content.heroImage}
-        imageAlt={`${courseSlug.toUpperCase()} Exam Prep Feature`}
+      <CourseHero 
+        examType={examType}
+        subtitle={content.subtitle}
+        logoSrc={content.logoSrc}
       />
-      <BentoGrid />
-      <DashboardCarousel />
-    <Pricing3ColsSubscription course={courseSlug} />
-    <ExamlyTestimonial />
+      
+      {/* Add the new ExamFeatures component */}
+      <ExamFeatures examType={examType} />
+      
+      {/* Add the new ExamHowItWorks component */}
+      <ExamHowItWorks examType={examType} />
+      
+      {/* Replace Pricing3ColsSubscription with ExamPricing */}
+      <ExamPricing examType={examType} />
+      
+     
    
+      
+    
       <ExamlyFAQ />
-      <ExamlyCTA />
       <FooterSection />
     </>
-  );
-}
-
-function FeatureLeft({ title, description, imageSrc, imageAlt }: {
-  title: string;
-  description: readonly string[];
-  imageSrc: string;
-  imageAlt: string;
-}) {
-  return (
-    <Section className="py-20 lg:py-32">
-      <div className="relative overflow-hidden">
-        <div className="container mx-auto max-w-container">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Text Content - Takes up 5 columns */}
-            <div className="lg:col-span-5 space-y-8 animate-in slide-in-from-left-8 duration-1000 ease-out">
-              <div className="space-y-6">
-                <h1 className="text-6xl font-bold animate-in fade-in-0 slide-in-from-left-4 duration-1000 delay-200 ease-out">
-                  {title}
-                </h1>
-                <div className="space-y-4 animate-in fade-in-0 slide-in-from-left-4 duration-1000 delay-400 ease-out">
-                  {description.map((paragraph, index) => (
-                    <p key={index} className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in-0 slide-in-from-left-4 duration-1000 delay-600 ease-out">
-                <Button size="lg" className="text-lg px-8 py-3">
-                  Start Learning
-                </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 py-3">
-                  View Demo
-                </Button>
-              </div>
-            </div>
-            
-            {/* Image Container - Takes up 7 columns and extends beyond */}
-            <div className="lg:col-span-7 lg:col-start-6 animate-in slide-in-from-right-8 duration-1000 delay-300 ease-out">
-              <div className="relative lg:ml-8">
-                {/* Desktop: Image extends beyond container */}
-                <div className="hidden lg:block relative w-[calc(100%+25vw)] aspect-[4/3]">
-                  <Image
-                    src={imageSrc}
-                    alt={imageAlt}
-                    fill
-                    className="object-contain object-left animate-in zoom-in-95 duration-1000 delay-500 ease-out"
-                    sizes="75vw"
-                    priority
-                  />
-                </div>
-                
-                {/* Mobile: Normal contained image */}
-                <div className="lg:hidden relative aspect-[4/3] w-full max-w-lg mx-auto">
-                  <Image
-                    src={imageSrc}
-                    alt={imageAlt}
-                    fill
-                    className="object-contain animate-in zoom-in-95 duration-1000 delay-500 ease-out"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Section>
   );
 }

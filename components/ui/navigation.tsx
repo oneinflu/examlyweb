@@ -101,8 +101,8 @@ export default function Navigation() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink href="/" className={navigationMenuTriggerStyle()}>
-            Resources
+          <NavigationMenuLink href="/why-examly" className={navigationMenuTriggerStyle()}>
+            Why Examly
           </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>

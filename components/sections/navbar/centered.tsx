@@ -173,8 +173,8 @@ export default function Navbar({
                       )}
                     </div>
 
-                    <a href="/" className="text-muted-foreground hover:text-foreground">
-                      Resources
+                    <a href="/why-examly" className="text-muted-foreground hover:text-foreground">
+                      Why Examly
                     </a>
                     <a href="/become-partner" className="text-muted-foreground hover:text-foreground">
                       Become a Partner
