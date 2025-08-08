@@ -8,13 +8,13 @@ import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 // Remove this line - framer-motion not compatible with server components
 // import { motion } from "framer-motion";
-import Glow from "@/components/ui/glow";
+
 
 import ExamlyFAQ from "@/components/sections/faq/examly";
 import ExamlyCTA from "@/components/sections/cta/examly";
 import BentoGrid from "@/components/sections/bento-grid/2-rows-top";
 import DashboardCarousel from "@/components/sections/carousel/dashboard-carousel";
-import PreparationProcess from "@/components/sections/feature/preparation-process";
+
 import { Pricing3ColsSubscription } from "@/components/sections/pricing/3-cols-subscription";
 import ExamlyTestimonial from "@/components/sections/testimonials/examly-testimonial";
 

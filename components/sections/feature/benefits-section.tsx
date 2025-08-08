@@ -19,7 +19,11 @@ import {
   MonitorIcon,
   TrendingUpIcon,
   RotateCcwIcon,
-  BookOpenIcon
+  BookOpenIcon,
+  MicIcon,
+  GraduationCapIcon,
+  FolderIcon,
+  UsersIcon
 } from "lucide-react";
 
 type Benefit = {
@@ -120,6 +124,50 @@ const examSimulationBenefits: Benefit[] = [
   }
 ];
 
+// Live Classes benefits
+const liveClassesBenefits: Benefit[] = [
+  {
+    icon: MicIcon,
+    title: "Real-Time Doubt Solving",
+    description: "Ask questions anytime — no waiting for email replies.",
+    color: "text-brand",
+    bgColor: "bg-brand/10",
+    borderColor: "border-brand/20"
+  },
+  {
+    icon: CalendarIcon,
+    title: "Structured Schedule",
+    description: "Stay on track with planned sessions.",
+    color: "text-brand-emerald",
+    bgColor: "bg-brand-emerald/10",
+    borderColor: "border-brand-emerald/20"
+  },
+  {
+    icon: GraduationCapIcon,
+    title: "Expert Faculty",
+    description: "Learn from certified CPA/CMA/EA mentors.",
+    color: "text-brand-fire",
+    bgColor: "bg-brand-fire/10",
+    borderColor: "border-brand-fire/20"
+  },
+  {
+    icon: FolderIcon,
+    title: "Lifetime Access to Recordings",
+    description: "Revisit sessions anytime.",
+    color: "text-brand-ember",
+    bgColor: "bg-brand-ember/10",
+    borderColor: "border-brand-ember/20"
+  },
+  {
+    icon: UsersIcon,
+    title: "Interactive Learning",
+    description: "Polls, quizzes, and group discussions in every class.",
+    color: "text-brand",
+    bgColor: "bg-brand/10",
+    borderColor: "border-brand/20"
+  }
+];
+
 interface BenefitsSectionProps extends React.HTMLAttributes<HTMLDivElement> {
   title?: string;
   subtitle?: string;
@@ -144,6 +192,8 @@ export default function BenefitsSection({
     switch (featureType) {
       case 'exam-simulation':
         return examSimulationBenefits;
+      case 'live-classes':
+        return liveClassesBenefits;
       case 'learning-path':
       default:
         return defaultBenefits;

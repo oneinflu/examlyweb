@@ -71,23 +71,7 @@ export default function FeaturesGrid() {
             </Link>
 
             {/* Feature 3 - Live Expert-Led Classes */}
-            <Link href="/feature/live-classes" className="block">
-              <div className="flex flex-col gap-4 p-6 bg-card rounded-xl border border-border/50 opacity-0 animate-appear delay-300 transition-all duration-300 hover:shadow-xl cursor-pointer h-full">
-                <div className="flex flex-col gap-3">
-                  <div className="h-2 w-2 rounded-full bg-purple-500"></div>
-                  <h3 className="text-xl font-semibold">Live Expert-Led Classes</h3>
-                </div>
-                
-                <div className="flex items-end justify-between mt-auto">
-                  <p className="text-muted-foreground flex-1 mr-4">
-                    Interactive sessions with industry mentors for deep learning.
-                  </p>
-                  <Button variant="outline" className="rounded-full w-12 h-12 p-0 group flex-shrink-0">
-                    <ArrowRightIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </div>
-              </div>
-            </Link>
+            
 
             {/* Feature 4 - Self-Assessment & Performance Analytics */}
             <Link href="/feature/self-assessment" className="block">
@@ -109,23 +93,7 @@ export default function FeaturesGrid() {
             </Link>
 
             {/* Feature 5 - Engaged Learning Community */}
-            <Link href="/feature/learning-community" className="block">
-              <div className="flex flex-col gap-4 p-6 bg-card rounded-xl border border-border/50 opacity-0 animate-appear delay-500 transition-all duration-300 hover:shadow-xl cursor-pointer h-full">
-                <div className="flex flex-col gap-3">
-                  <div className="h-2 w-2 rounded-full bg-pink-500"></div>
-                  <h3 className="text-xl font-semibold">Engaged Learning Community</h3>
-                </div>
-                
-                <div className="flex items-end justify-between mt-auto">
-                  <p className="text-muted-foreground flex-1 mr-4">
-                    Collaborate, share strategies, and stay motivated with peers.
-                  </p>
-                  <Button variant="outline" className="rounded-full w-12 h-12 p-0 group flex-shrink-0">
-                    <ArrowRightIcon className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </div>
-              </div>
-            </Link>
+            
 
             {/* Feature 6 - Offline Access Anywhere */}
             <Link href="/feature/offline-access" className="block">

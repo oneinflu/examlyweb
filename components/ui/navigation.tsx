@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import {
@@ -28,23 +27,13 @@ const components: { title: string; href: string; description: string }[] = [
     description:
       "Mock tests that replicate the real exam experience for confidence.",
   },
-  {
-    title: "Live Expert-Led Classes",
-    href: "/feature/live-classes",
-    description:
-      "Interactive sessions with industry mentors for deep learning.",
-  },
+  
   {
     title: "Self-Assessment & Analytics",
     href: "/feature/self-assessment",
     description: "Track progress with detailed reports and performance insights.",
   },
-  {
-    title: "Engaged Learning Community",
-    href: "/feature/learning-community",
-    description:
-      "Collaborate, share strategies, and stay motivated with peers.",
-  },
+  
   {
     title: "Offline Access Anywhere",
     href: "/feature/offline-access",
@@ -58,11 +47,9 @@ export default function Navigation() {
     <NavigationMenu className="hidden md:flex">
       <NavigationMenuList>
          <NavigationMenuItem>
-          <Link href="/"  passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Home
-            </NavigationMenuLink>
-          </Link>
+          <NavigationMenuLink href="/" className={navigationMenuTriggerStyle()}>
+            Home
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Exam Prep</NavigationMenuTrigger>
@@ -102,30 +89,26 @@ export default function Navigation() {
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {components.map((component) => (
-  <ListItem
-    key={component.title}
-    title={component.title}
-    href={component.href}
-  >
-    {component.description}
-  </ListItem>
-))}
+                <ListItem
+                  key={component.title}
+                  title={component.title}
+                  href={component.href}
+                >
+                  {component.description}
+                </ListItem>
+              ))}
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/"  passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Resources
-            </NavigationMenuLink>
-          </Link>
+          <NavigationMenuLink href="/" className={navigationMenuTriggerStyle()}>
+            Resources
+          </NavigationMenuLink>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/become-partner"  passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Become a partner
-            </NavigationMenuLink>
-          </Link>
+          <NavigationMenuLink href="/become-partner" className={navigationMenuTriggerStyle()}>
+            Become a partner
+          </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

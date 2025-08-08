@@ -161,15 +161,11 @@ export default function Navbar({
                           <a href="/feature/exam-simulation" className="text-muted-foreground hover:text-foreground">
                             Real Exam Simulations
                           </a>
-                          <a href="/feature/live-classes" className="text-muted-foreground hover:text-foreground">
-                            Live Expert-Led Classes
-                          </a>
+                         
                           <a href="/feature/self-assessment" className="text-muted-foreground hover:text-foreground">
                             Self-Assessment & Analytics
                           </a>
-                          <a href="/feature/learning-community" className="text-muted-foreground hover:text-foreground">
-                            Engaged Learning Community
-                          </a>
+                         
                           <a href="/feature/offline-access" className="text-muted-foreground hover:text-foreground">
                             Offline Access Anywhere
                           </a>

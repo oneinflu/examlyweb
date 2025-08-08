@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { notFound } from "next/navigation";
-import Navbar from "@/components/sections/navbar/centered";
-import FooterSection from "@/components/sections/footer/5-columns";
 
 // Learning Path Components
 import PrepPackageHero from "@/components/sections/hero/prep-package-hero";
@@ -11,20 +9,34 @@ import BenefitsSection from "@/components/sections/feature/benefits-section";
 import DemoCarousel from "@/components/sections/feature/demo-carousel";
 import SuccessStoriesSection from "@/components/sections/feature/success-stories-section";
 import BeforeAfterSection from "@/components/sections/feature/before-after-section";
-import LearningPathFAQ from "@/components/sections/feature/learning-path-faq";
-import LearningPathCTA from "@/components/sections/feature/learning-path-cta";
+import DynamicFAQ from "@/components/sections/feature/dynamic-faq";
 
-// Generic Components
-import Hero from "@/components/sections/hero/default";
-import FeatureStickyLeft from "@/components/sections/feature/sticky-left";
-import FeatureStickyRight from "@/components/sections/feature/sticky-right";
-import ExamlyFAQ from "@/components/sections/faq/examly";
-import ExamlyCTA from "@/components/sections/cta/examly";
+// Exam Simulation Components
 import ExamSimulationHero from "@/components/sections/hero/exam-simulation-hero";
 import ExamSimulationProblem from "@/components/sections/feature/exam-simulation-problem";
 import HowSimulationWorks from "@/components/sections/feature/how-simulation-works";
 import ExamFormatsSection from "@/components/sections/feature/exam-formats-section";
 import FullLengthTests from "@/components/sections/feature/full-length-tests";
+import DynamicCTA from "@/components/sections/feature/dynamic-cta";
+
+// Live Classes Components
+import LiveClassesHero from "@/components/sections/hero/live-classes-hero";
+import LiveClassesProblem from "@/components/sections/feature/live-classes-problem";
+import LiveClassesProcess from "@/components/sections/feature/live-classes-process";
+import LiveClassroomFeatures from "@/components/sections/feature/live-classroom-features";
+import LiveClassesVariety from "@/components/sections/feature/live-classes-variety";
+import InstructorSpotlight from "@/components/sections/feature/instructor-spotlight";
+import Navbar from "@/components/sections/navbar/centered";
+import FooterSection from "@/components/sections/footer/5-columns";
+import OfflineAccessHero from "@/components/sections/hero/offline-access-hero";
+import OfflineAccessProblem from "@/components/sections/feature/offline-access-problem";
+import { OfflineAccessSync } from "@/components/sections/feature/offline-access-sync";
+
+import SelfAssessmentHero from "@/components/sections/hero/self-assessment-hero";
+import SelfAssessmentProblem from "@/components/sections/feature/self-assessment-problem";
+import AnalyticsOverview from "@/components/sections/feature/analytics-overview";
+import AiInsightsStrip from "@/components/sections/feature/ai-insights-strip";
+
 
 // Define valid feature slugs
 const validFeatureSlugs = [
@@ -43,161 +55,7 @@ export async function generateStaticParams() {
   }));
 }
 
-// Enhanced feature content with detailed sections
-const featureContent = {
-  "exam-simulation": {
-    hero: {
-      title: "Master Your Exam with Real-World Simulations",
-      description: "Experience the most realistic exam environment with our advanced simulation technology. Practice under exam-like conditions and build the confidence you need to succeed.",
-      image: "/simulation.svg"
-    },
-    sections: [
-      {
-        title: "Authentic Exam Experience",
-        description: ["Timer that mirrors actual exam conditions", "Questions formatted exactly like the real test"],
-        image: "/prep.png"
-      },
-      {
-        title: "Performance Analytics",
-        description: ["Detailed score breakdowns", "Question-by-question analysis"],
-        image: "/calender.png"
-      },
-      {
-        title: "Adaptive Question Bank",
-        description: ["Questions that adjust to your skill level", "Focus on your weak areas"],
-        image: "/exam.png"
-      }
-    ]
-  },
-  "personalized-learning": {
-    hero: {
-      title: "AI-Powered Learning Paths Just for You",
-      description: "Your journey to success, perfectly tailored to your learning style, schedule, and goals. Let our AI create your optimal study plan.",
-      image: "/learning.svg"
-    },
-    sections: [
-      {
-        title: "Smart Study Scheduling",
-        description: ["AI-generated study plans", "Automatic schedule adjustments based on progress"],
-        image: "/calender.png"
-      },
-      {
-        title: "Progress Tracking",
-        description: ["Visual progress indicators", "Milestone achievements"],
-        image: "/prep.png"
-      },
-      {
-        title: "Personalized Content",
-        description: ["Custom-picked practice questions", "Targeted review materials"],
-        image: "/plan.jpg"
-      }
-    ]
-  },
-  "live-classes": {
-    hero: {
-      title: "Interactive Live Classes with Expert Instructors",
-      description: "Join our dynamic live sessions where expert instructors break down complex topics and answer your questions in real-time.",
-      image: "/home.png"
-    },
-    sections: [
-      {
-        title: "Expert-Led Sessions",
-        description: ["Learn from industry professionals", "Interactive Q&A sessions"],
-        image: "/prep.png"
-      },
-      {
-        title: "Real-Time Interaction",
-        description: ["Live doubt clearing", "Collaborative learning environment"],
-        image: "/calender.png"
-      },
-      {
-        title: "Recorded Sessions",
-        description: ["Watch missed classes anytime", "Revision-friendly recordings"],
-        image: "/exam.png"
-      }
-    ]
-  },
-  "self-assessment": {
-    hero: {
-      title: "Track Your Progress with Smart Self-Assessment",
-      description: "Evaluate your understanding with our comprehensive self-assessment tools. Get instant feedback and detailed performance analytics.",
-      image: "/macbook.png"
-    },
-    sections: [
-      {
-        title: "Instant Feedback",
-        description: ["Detailed explanations for each answer", "Performance improvement tips"],
-        image: "/prep.png"
-      },
-      {
-        title: "Progress Analytics",
-        description: ["Visual progress tracking", "Strength and weakness analysis"],
-        image: "/calender.png"
-      },
-      {
-        title: "Custom Practice Sets",
-        description: ["Topic-wise practice questions", "Difficulty-based challenges"],
-        image: "/exam.png"
-      }
-    ]
-  },
-  "learning-community": {
-    hero: {
-      title: "Join a Vibrant Learning Community",
-      description: "Connect with fellow learners, share knowledge, and grow together in our active learning community.",
-      image: "/bg.png"
-    },
-    sections: [
-      {
-        title: "Discussion Forums",
-        description: ["Topic-wise discussions", "Peer-to-peer learning"],
-        image: "/look1.svg"
-      },
-      {
-        title: "Study Groups",
-        description: ["Form study circles", "Collaborative problem solving"],
-        image: "/look2.svg"
-      },
-      {
-        title: "Resource Sharing",
-        description: ["Share study materials", "Exchange learning tips"],
-        image: "/look3.svg"
-      }
-    ]
-  },
-  "offline-access": {
-    hero: {
-      title: "Learn Anytime, Anywhere with Offline Access",
-      description: "Download your study materials and access them without internet. Never let connectivity issues interrupt your learning.",
-      image: "/offline.svg"
-    },
-    sections: [
-      {
-        title: "Downloadable Content",
-        description: ["Save lessons for offline use", "Access materials anywhere"],
-        image: "/file.svg"
-      },
-      {
-        title: "Sync Progress",
-        description: ["Auto-sync when online", "Never lose your progress"],
-        image: "/globe.svg"
-      },
-      {
-        title: "Mobile Friendly",
-        description: ["Optimized for all devices", "Seamless learning experience"],
-        image: "/ios.png"
-      }
-    ]
-  }
-};
 
-type FeatureParams = {
-  params: Promise<{
-    slug: string;
-  }>;
-};
-
-// Define which components each feature should use
 // Add proper typing for the component mapping
 type ComponentMapping = {
   component: React.ComponentType<any>;
@@ -218,8 +76,8 @@ const featureLayouts: Record<string, FeatureLayout> = {
       { component: DemoCarousel, props: {} },
       { component: SuccessStoriesSection, props: {} },
       { component: BeforeAfterSection, props: {} },
-      { component: LearningPathFAQ, props: {} },
-      { component: LearningPathCTA, props: {} }
+      { component: DynamicFAQ, props: { featureType: 'learning-path' } },
+      { component: DynamicCTA, props: { featureType: "learning-path" } }
     ]
   },
   "exam-simulation": {
@@ -230,72 +88,85 @@ const featureLayouts: Record<string, FeatureLayout> = {
       { component: ExamFormatsSection, props: {} },
       { component: FullLengthTests, props: {} },
       { component: BenefitsSection, props: { featureType: 'exam-simulation' } },
+      { component: DynamicFAQ, props: { featureType: 'exam-simulation' } },
+      { component: DynamicCTA, props: { featureType: "exam-simulation" } }
     ]
   },
   "live-classes": {
     components: [
-      { component: Hero, props: { content: featureContent["live-classes"].hero } },
-      { component: FeatureStickyLeft, props: { content: featureContent["live-classes"].sections[0] } },
-      { component: FeatureStickyRight, props: { content: featureContent["live-classes"].sections[1] } },
-      { component: FeatureStickyLeft, props: { content: featureContent["live-classes"].sections[2] } },
+      { component: LiveClassesHero, props: {} },
+      { component: LiveClassesProblem, props: {} },
+      { component: LiveClassesProcess, props: {} },
       { component: BenefitsSection, props: { featureType: 'live-classes' } },
-     
+      { component: LiveClassroomFeatures, props: {} },
+      { component: LiveClassesVariety, props: {} },
+      { component: InstructorSpotlight, props: {} },
+      { component: DynamicFAQ, props: { featureType: 'live-classes' } },
+      { component: DynamicCTA, props: { featureType: "live-classes" } }
     ]
   },
   "self-assessment": {
     components: [
-      { component: Hero, props: { content: featureContent["self-assessment"].hero } },
-      { component: FeatureStickyLeft, props: { content: featureContent["self-assessment"].sections[0] } },
-      { component: FeatureStickyRight, props: { content: featureContent["self-assessment"].sections[1] } },
-      { component: FeatureStickyLeft, props: { content: featureContent["self-assessment"].sections[2] } },
-      { component: BenefitsSection, props: { featureType: 'self-assessment' } },
+      { component: SelfAssessmentHero, props: {} },
+     { component: SelfAssessmentProblem, props: {} },
+      { component: AnalyticsOverview, props: {} },
+      { component: AiInsightsStrip, props: {} },
    
+      
+      { component: DynamicFAQ, props: { featureType: 'self-assessment' } },
+      { component: DynamicCTA, props: { featureType: "self-assessment" } }
     ]
   },
   "learning-community": {
     components: [
-      { component: Hero, props: { content: featureContent["learning-community"].hero } },
-      { component: FeatureStickyLeft, props: { content: featureContent["learning-community"].sections[0] } },
-      { component: FeatureStickyRight, props: { content: featureContent["learning-community"].sections[1] } },
-      { component: FeatureStickyLeft, props: { content: featureContent["learning-community"].sections[2] } },
+      { component: ExamSimulationHero, props: {} },
+      { component: ExamSimulationProblem, props: {} },
+      { component: HowSimulationWorks, props: {} },
+      { component: ExamFormatsSection, props: {} },
+      { component: FullLengthTests, props: {} },
       { component: BenefitsSection, props: { featureType: 'learning-community' } },
-     
+      { component: DynamicFAQ, props: { featureType: 'learning-community' } },
+      { component: DynamicCTA, props: { featureType: "learning-community" } }
     ]
   },
   "offline-access": {
     components: [
-      { component: Hero, props: { content: featureContent["offline-access"].hero } },
-      { component: FeatureStickyLeft, props: { content: featureContent["offline-access"].sections[0] } },
-      { component: FeatureStickyRight, props: { content: featureContent["offline-access"].sections[1] } },
-      { component: FeatureStickyLeft, props: { content: featureContent["offline-access"].sections[2] } },
-      { component: BenefitsSection, props: { featureType: 'offline-access' } },
+      { component: OfflineAccessHero, props: {} },
+      { component: OfflineAccessProblem, props: {} },
+      { component: OfflineAccessSync, props: {} },
+      
+     
+      { component: DynamicFAQ, props: { featureType: 'offline-access' } },
     
     ]
   }
 };
 
-export default async function FeaturePage({ params }: FeatureParams) {
-  const resolvedParams = await params;
-  const slug = resolvedParams.slug;
-
+// Main page component
+export default async function FeaturePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  
+  // Check if the slug is valid
   if (!validFeatureSlugs.includes(slug)) {
     notFound();
   }
-
-  const layout = featureLayouts[slug as keyof typeof featureLayouts];
-
+  
+  // Get the layout for this feature
+  const layout = featureLayouts[slug];
+  
+  if (!layout) {
+    notFound();
+  }
+  
   return (
-    <>
-      <Navbar />
-      
-      {/* Dynamically render components based on feature */}
-     
+    <><Navbar /><main className="min-h-screen">
       {layout.components.map((item, index) => {
         const Component = item.component;
-        return <Component key={index} {...(item.props || {})} />;
+        return <Component key={index} {...item.props} />;
       })}
-      
-      <FooterSection />
+    </main>
+    <FooterSection />
     </>
   );
 }
+

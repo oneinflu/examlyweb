@@ -1,25 +1,32 @@
 "use client";
-import DashboardCarousel from "@/components/sections/carousel/dashboard-carousel";
-import ExamlyFAQ from "@/components/sections/faq/examly";
-import FeaturesGrid from "@/components/sections/feature/features-grid";
+
+import FinalCTA from "@/components/sections/cta/final-cta";
+
+import MinimalisticFAQ from "@/components/sections/faq/minimalistic";
+import CoreFeatures from "@/components/sections/feature/core-features";
+
+import MissionStorytelling from "@/components/sections/feature/mission-storytelling";
+import ValueProposition from "@/components/sections/feature/value-proposition";
 import FooterSection from "@/components/sections/footer/5-columns";
-import ExamlyHero from "@/components/sections/hero/examly-hero";
-import SplitLayoutHero from "@/components/sections/hero/split-layout";
+
+import MainHero from "@/components/sections/hero/main-hero";
+
 import Navbar from "@/components/sections/navbar/centered";
-import SocialProof from "@/components/sections/social-proof/marquee-2-rows";
-import ExamlyTestimonial from "@/components/sections/testimonials/examly-testimonial";
+import Plan from "@/components/sections/pricing/plan";
+
+import SuccessStories from "@/components/sections/testimonials/success-stories";
 export default function Home() {
   return (
    <>
    <Navbar />
-   <SplitLayoutHero />
-
-    <ExamlyHero />
-  <FeaturesGrid />
-  <DashboardCarousel />
-   <ExamlyTestimonial />
-   
-   <ExamlyFAQ /> 
+   <MainHero />
+<ValueProposition />
+   <MissionStorytelling /> 
+   <CoreFeatures />
+   <SuccessStories />
+   <Plan />
+   <MinimalisticFAQ />
+   <FinalCTA />
    <FooterSection />
    </>
   );
