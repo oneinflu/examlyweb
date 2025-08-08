@@ -1,11 +1,30 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { notFound } from "next/navigation";
 import Navbar from "@/components/sections/navbar/centered";
 import FooterSection from "@/components/sections/footer/5-columns";
+
+// Learning Path Components
+import PrepPackageHero from "@/components/sections/hero/prep-package-hero";
+import ProblemSection from "@/components/sections/feature/problem-section";
+import LearningPathSection from "@/components/sections/feature/learning-path-section";
+import BenefitsSection from "@/components/sections/feature/benefits-section";
+import DemoCarousel from "@/components/sections/feature/demo-carousel";
+import SuccessStoriesSection from "@/components/sections/feature/success-stories-section";
+import BeforeAfterSection from "@/components/sections/feature/before-after-section";
+import LearningPathFAQ from "@/components/sections/feature/learning-path-faq";
+import LearningPathCTA from "@/components/sections/feature/learning-path-cta";
+
+// Generic Components
 import Hero from "@/components/sections/hero/default";
 import FeatureStickyLeft from "@/components/sections/feature/sticky-left";
 import FeatureStickyRight from "@/components/sections/feature/sticky-right";
 import ExamlyFAQ from "@/components/sections/faq/examly";
 import ExamlyCTA from "@/components/sections/cta/examly";
+import ExamSimulationHero from "@/components/sections/hero/exam-simulation-hero";
+import ExamSimulationProblem from "@/components/sections/feature/exam-simulation-problem";
+import HowSimulationWorks from "@/components/sections/feature/how-simulation-works";
+import ExamFormatsSection from "@/components/sections/feature/exam-formats-section";
+import FullLengthTests from "@/components/sections/feature/full-length-tests";
 
 // Define valid feature slugs
 const validFeatureSlugs = [
@@ -30,7 +49,7 @@ const featureContent = {
     hero: {
       title: "Master Your Exam with Real-World Simulations",
       description: "Experience the most realistic exam environment with our advanced simulation technology. Practice under exam-like conditions and build the confidence you need to succeed.",
-      image: "/macbook.png"
+      image: "/simulation.svg"
     },
     sections: [
       {
@@ -54,7 +73,7 @@ const featureContent = {
     hero: {
       title: "AI-Powered Learning Paths Just for You",
       description: "Your journey to success, perfectly tailored to your learning style, schedule, and goals. Let our AI create your optimal study plan.",
-      image: "/plan.jpg"
+      image: "/learning.svg"
     },
     sections: [
       {
@@ -178,6 +197,83 @@ type FeatureParams = {
   }>;
 };
 
+// Define which components each feature should use
+// Add proper typing for the component mapping
+type ComponentMapping = {
+  component: React.ComponentType<any>;
+  props?: Record<string, any>;
+};
+
+type FeatureLayout = {
+  components: ComponentMapping[];
+};
+
+const featureLayouts: Record<string, FeatureLayout> = {
+  "personalized-learning": {
+    components: [
+      { component: PrepPackageHero, props: { course: "cpa", packageType: "pro" } },
+      { component: ProblemSection, props: {} },
+      { component: LearningPathSection, props: {} },
+      { component: BenefitsSection, props: { featureType: 'learning-path' } },
+      { component: DemoCarousel, props: {} },
+      { component: SuccessStoriesSection, props: {} },
+      { component: BeforeAfterSection, props: {} },
+      { component: LearningPathFAQ, props: {} },
+      { component: LearningPathCTA, props: {} }
+    ]
+  },
+  "exam-simulation": {
+    components: [
+      { component: ExamSimulationHero, props: {} },
+      { component: ExamSimulationProblem, props: {} },
+      { component: HowSimulationWorks, props: {} },
+      { component: ExamFormatsSection, props: {} },
+      { component: FullLengthTests, props: {} },
+      { component: BenefitsSection, props: { featureType: 'exam-simulation' } },
+    ]
+  },
+  "live-classes": {
+    components: [
+      { component: Hero, props: { content: featureContent["live-classes"].hero } },
+      { component: FeatureStickyLeft, props: { content: featureContent["live-classes"].sections[0] } },
+      { component: FeatureStickyRight, props: { content: featureContent["live-classes"].sections[1] } },
+      { component: FeatureStickyLeft, props: { content: featureContent["live-classes"].sections[2] } },
+      { component: BenefitsSection, props: { featureType: 'live-classes' } },
+     
+    ]
+  },
+  "self-assessment": {
+    components: [
+      { component: Hero, props: { content: featureContent["self-assessment"].hero } },
+      { component: FeatureStickyLeft, props: { content: featureContent["self-assessment"].sections[0] } },
+      { component: FeatureStickyRight, props: { content: featureContent["self-assessment"].sections[1] } },
+      { component: FeatureStickyLeft, props: { content: featureContent["self-assessment"].sections[2] } },
+      { component: BenefitsSection, props: { featureType: 'self-assessment' } },
+   
+    ]
+  },
+  "learning-community": {
+    components: [
+      { component: Hero, props: { content: featureContent["learning-community"].hero } },
+      { component: FeatureStickyLeft, props: { content: featureContent["learning-community"].sections[0] } },
+      { component: FeatureStickyRight, props: { content: featureContent["learning-community"].sections[1] } },
+      { component: FeatureStickyLeft, props: { content: featureContent["learning-community"].sections[2] } },
+      { component: BenefitsSection, props: { featureType: 'learning-community' } },
+     
+    ]
+  },
+  "offline-access": {
+    components: [
+      { component: Hero, props: { content: featureContent["offline-access"].hero } },
+      { component: FeatureStickyLeft, props: { content: featureContent["offline-access"].sections[0] } },
+      { component: FeatureStickyRight, props: { content: featureContent["offline-access"].sections[1] } },
+      { component: FeatureStickyLeft, props: { content: featureContent["offline-access"].sections[2] } },
+      { component: BenefitsSection, props: { featureType: 'offline-access' } },
+    
+    ]
+  }
+};
+
 export default async function FeaturePage({ params }: FeatureParams) {
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
@@ -186,29 +282,19 @@ export default async function FeaturePage({ params }: FeatureParams) {
     notFound();
   }
 
-  const content = featureContent[slug as keyof typeof featureContent];
+  const layout = featureLayouts[slug as keyof typeof featureLayouts];
 
   return (
     <>
       <Navbar />
-      <Hero 
-        title={content.hero.title}
-        description={content.hero.description}
-        image={content.hero.image} />
-      {content.sections.map((section, index) => {
-        const Component = index % 2 === 0 ? FeatureStickyLeft : FeatureStickyRight;
-        return (
-          <Component
-            key={section.title}
-            title={section.title}
-            description={section.description}
-            imageSrc={section.image}
-            imageAlt={section.title}
-          />
-        );
+      
+      {/* Dynamically render components based on feature */}
+     
+      {layout.components.map((item, index) => {
+        const Component = item.component;
+        return <Component key={index} {...(item.props || {})} />;
       })}
-      <ExamlyFAQ />
-      <ExamlyCTA />
+      
       <FooterSection />
     </>
   );
