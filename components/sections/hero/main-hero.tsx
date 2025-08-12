@@ -51,7 +51,7 @@ export default function MainHero() {
         const progress = currentStep / steps;
         
         setAnimatedValues({
-          students: Math.floor(progress * 50000),
+          students: Math.floor(progress * 3000000), // Updated to 3M
           courses: Math.floor(progress * 120),
           passRate: Math.floor(progress * 94)
         });
@@ -74,7 +74,7 @@ export default function MainHero() {
   }, [features.length]);
 
   return (
-    <Section className="relative overflow-hidden py-20 lg:py-28">
+    <Section className="relative overflow-hidden py-16 md:py-20 lg:py-28">
       {/* Premium background with overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/80 to-background/90 z-10" />
       
@@ -119,83 +119,70 @@ export default function MainHero() {
       <div className="container mx-auto max-w-container px-4 sm:px-6 lg:px-8 relative z-20">
         {/* Partner logos section at top */}
         <div 
-          className={`flex flex-wrap justify-center gap-8 mb-12 transform transition-all duration-700 ease-out ${mounted ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+          className={`flex flex-wrap justify-center gap-4 md:gap-8 mb-8 md:mb-12 transform transition-all duration-700 ease-out ${mounted ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
         >
-          <Badge variant="outline" className="px-4 py-2 bg-card/50 backdrop-blur-sm border-primary/20 flex items-center gap-2">
-            <GraduationCap className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium">Trusted by Top Universities</span>
-          </Badge>
-          
-          <Badge variant="outline" className="px-4 py-2 bg-card/50 backdrop-blur-sm border-primary/20 flex items-center gap-2">
-            <Target className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium">Industry-Leading Pass Rates</span>
-          </Badge>
-          
-          <Badge variant="outline" className="px-4 py-2 bg-card/50 backdrop-blur-sm border-primary/20 flex items-center gap-2">
-            <BookOpen className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium">Comprehensive Study Materials</span>
-          </Badge>
+         
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left column - Text content */}
           <div 
-            className={`text-left space-y-8 transform transition-all duration-700 ease-out ${mounted ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+            className={`text-left space-y-6 md:space-y-8 transform transition-all duration-700 ease-out ${mounted ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
           >
             {/* Main headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-foreground">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-foreground">
               Master Your <span className="text-brand-fire">CPA</span>, <span className="text-brand">CMA</span> & <span className="text-brand-emerald">EA</span> Exams with Confidence
             </h1>
             
             {/* Animated feature highlight */}
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                <CheckCircle className="w-5 h-5 text-primary" />
+            <div className="flex items-center gap-2 md:gap-3">
+              <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                <CheckCircle className="w-4 h-4 md:w-5 md:h-5 text-primary" />
               </div>
-              <p className="text-xl font-medium">
+              <p className="text-lg md:text-xl font-medium">
                 <span className="text-primary">{features[activeFeature]}</span>
                 <span className="inline-block w-1 h-5 bg-primary/50 ml-1 animate-blink"></span>
               </p>
             </div>
             
             {/* Subheadline */}
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-base md:text-xl text-muted-foreground leading-relaxed">
               World-class content, expert-led live classes, personalized learning paths, and realistic exam simulations — all on one trusted platform.
             </p>
             
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-2 md:pt-4">
               <Button 
                 size="lg" 
-                className="group bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg font-medium rounded-md shadow-lg transition-all duration-300"
+                className="group bg-primary hover:bg-primary/90 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-medium rounded-md shadow-lg transition-all duration-300 w-full sm:w-auto"
               >
                 Start Your Free Trial
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
               
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="border-2 border-primary/50 hover:border-primary hover:bg-primary/5 text-primary px-6 py-6 text-lg font-medium rounded-md transition-all duration-300"
+                className="border-2 border-primary/50 hover:border-primary hover:bg-primary/5 text-primary px-4 md:px-6 py-5 md:py-6 text-base md:text-lg font-medium rounded-md transition-all duration-300 w-full sm:w-auto"
               >
-                <PlayCircle className="mr-2 w-5 h-5" />
+                <PlayCircle className="mr-2 w-4 h-4 md:w-5 md:h-5" />
                 Watch Demo
               </Button>
             </div>
             
             {/* Trust Indicators with animation */}
-            <div className="pt-6 flex flex-wrap gap-4">
+            <div className="pt-4 md:pt-6 flex flex-wrap gap-3 md:gap-4">
               <div className="flex items-center gap-1">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-500 fill-yellow-500" />
+                  <Star key={i} className="w-4 h-4 md:w-5 md:h-5 text-yellow-500 fill-yellow-500" />
                 ))}
-                <span className="ml-2 text-sm font-medium">4.9/5 Rating</span>
+                <span className="ml-2 text-xs md:text-sm font-medium">4.9/5 Rating</span>
               </div>
               
-              <Badge variant="outline" className="px-3 py-1 text-xs bg-card/50 backdrop-blur-sm">
+              <Badge variant="outline" className="px-2 md:px-3 py-1 text-xs bg-card/50 backdrop-blur-sm">
                 SSL Secured
               </Badge>
-              <Badge variant="outline" className="px-3 py-1 text-xs bg-card/50 backdrop-blur-sm">
+              <Badge variant="outline" className="px-2 md:px-3 py-1 text-xs bg-card/50 backdrop-blur-sm">
                 GDPR Compliant
               </Badge>
             </div>
@@ -205,54 +192,54 @@ export default function MainHero() {
           <div 
             className={`transform transition-all duration-700 delay-300 ease-out ${mounted ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-8 opacity-0 scale-95'}`}
           >
-            <Card className="relative overflow-hidden bg-card/50 backdrop-blur-sm border border-border/50 shadow-xl rounded-xl p-6">
+            <Card className="relative overflow-hidden bg-card/50 backdrop-blur-sm border border-border/50 shadow-xl rounded-xl p-4 md:p-6">
               {/* Stats Cards */}
-              <div className="grid grid-cols-3 gap-4 mb-6">
-                <div className="text-center p-4 rounded-lg bg-primary/10 border border-primary/20">
-                  <div className="text-3xl font-bold text-primary mb-1">{animatedValues.students.toLocaleString()}+</div>
-                  <div className="text-sm text-muted-foreground">Students</div>
+              <div className="grid grid-cols-3 gap-2 md:gap-4 mb-4 md:mb-6">
+                <div className="text-center p-2 md:p-4 rounded-lg bg-primary/10 border border-primary/20">
+                  <div className="text-xl md:text-3xl font-bold text-primary mb-0 md:mb-1">3M+</div>
+                  <div className="text-xs md:text-sm text-muted-foreground">Students</div>
                 </div>
                 
-                <div className="text-center p-4 rounded-lg bg-brand-fire/10 border border-brand-fire/20">
-                  <div className="text-3xl font-bold text-brand-fire mb-1">{animatedValues.courses}+</div>
-                  <div className="text-sm text-muted-foreground">Courses</div>
+                <div className="text-center p-2 md:p-4 rounded-lg bg-brand-fire/10 border border-brand-fire/20">
+                  <div className="text-xl md:text-3xl font-bold text-brand-fire mb-0 md:mb-1">{animatedValues.courses}+</div>
+                  <div className="text-xs md:text-sm text-muted-foreground">Courses</div>
                 </div>
                 
-                <div className="text-center p-4 rounded-lg bg-brand-emerald/10 border border-brand-emerald/20">
-                  <div className="text-3xl font-bold text-brand-emerald mb-1">{animatedValues.passRate}%</div>
-                  <div className="text-sm text-muted-foreground">Pass Rate</div>
+                <div className="text-center p-2 md:p-4 rounded-lg bg-brand-emerald/10 border border-brand-emerald/20">
+                  <div className="text-xl md:text-3xl font-bold text-brand-emerald mb-0 md:mb-1">{animatedValues.passRate}%</div>
+                  <div className="text-xs md:text-sm text-muted-foreground">Pass Rate</div>
                 </div>
               </div>
               
               {/* Feature highlights */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-white/50 border border-border/50 hover:border-primary/30 hover:bg-white/80 transition-all duration-300">
-                  <div className="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center">
-                    <Sparkles className="w-5 h-5 text-brand" />
+              <div className="space-y-2 md:space-y-4">
+                <div className="flex items-center gap-2 md:gap-3 p-2 md:p-3 rounded-lg bg-white/50 border border-border/50 hover:border-primary/30 hover:bg-white/80 transition-all duration-300">
+                  <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-brand/10 flex items-center justify-center">
+                    <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-brand" />
                   </div>
                   <div>
-                    <h3 className="font-medium">Adaptive Learning</h3>
-                    <p className="text-sm text-muted-foreground">Personalized study plans that adapt to your progress</p>
+                    <h3 className="text-sm md:text-base font-medium">Adaptive Learning</h3>
+                    <p className="text-xs md:text-sm text-muted-foreground">Personalized study plans that adapt to your progress</p>
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-white/50 border border-border/50 hover:border-primary/30 hover:bg-white/80 transition-all duration-300">
-                  <div className="w-10 h-10 rounded-full bg-brand-fire/10 flex items-center justify-center">
-                    <Target className="w-5 h-5 text-brand-fire" />
+                <div className="flex items-center gap-2 md:gap-3 p-2 md:p-3 rounded-lg bg-white/50 border border-border/50 hover:border-primary/30 hover:bg-white/80 transition-all duration-300">
+                  <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-brand-fire/10 flex items-center justify-center">
+                    <Target className="w-4 h-4 md:w-5 md:h-5 text-brand-fire" />
                   </div>
                   <div>
-                    <h3 className="font-medium">Exam Simulations</h3>
-                    <p className="text-sm text-muted-foreground">Practice with realistic exam environments</p>
+                    <h3 className="text-sm md:text-base font-medium">Exam Simulations</h3>
+                    <p className="text-xs md:text-sm text-muted-foreground">Practice with realistic exam environments</p>
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-white/50 border border-border/50 hover:border-primary/30 hover:bg-white/80 transition-all duration-300">
-                  <div className="w-10 h-10 rounded-full bg-brand-emerald/10 flex items-center justify-center">
-                    <Users className="w-5 h-5 text-brand-emerald" />
+                <div className="flex items-center gap-2 md:gap-3 p-2 md:p-3 rounded-lg bg-white/50 border border-border/50 hover:border-primary/30 hover:bg-white/80 transition-all duration-300">
+                  <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-brand-emerald/10 flex items-center justify-center">
+                    <Users className="w-4 h-4 md:w-5 md:h-5 text-brand-emerald" />
                   </div>
                   <div>
-                    <h3 className="font-medium">Expert Support</h3>
-                    <p className="text-sm text-muted-foreground">Get help from certified instructors anytime</p>
+                    <h3 className="text-sm md:text-base font-medium">Expert Support</h3>
+                    <p className="text-xs md:text-sm text-muted-foreground">Get help from certified instructors anytime</p>
                   </div>
                 </div>
               </div>
