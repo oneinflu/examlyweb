@@ -58,9 +58,7 @@ export default function FooterSection() {
               <Link href="/cma" className="text-sm text-muted-foreground hover:text-foreground block mb-2">
                 CMA
               </Link>
-              <Link href="/acca" className="text-sm text-muted-foreground hover:text-foreground block mb-2">
-                ACCA
-              </Link>
+              
               <Link href="/ea" className="text-sm text-muted-foreground hover:text-foreground block mb-2">
                 EA
               </Link>
@@ -76,15 +74,15 @@ export default function FooterSection() {
                 Copyright & Trademarks
               </Link>
               <Link href="/terms" className="text-sm text-muted-foreground hover:text-foreground block mb-2">
-                Cookie Policy
+                Terms of Service
               </Link>
               <Link href="/return-policy" className="text-sm text-muted-foreground hover:text-foreground block mb-2">
-                Refund Policy and Terms
+                Refund Policy
               </Link>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-foreground block mb-2">
+              <Link href="/student-catalog" className="text-sm text-muted-foreground hover:text-foreground block mb-2">
                 Student Catalog & Policies
               </Link>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-foreground block mb-2">
+              <Link href="/accessibility" className="text-sm text-muted-foreground hover:text-foreground block mb-2">
                 Accessibility Statement
               </Link>
             </FooterColumn>
@@ -111,7 +109,7 @@ export default function FooterSection() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                   <span className="text-sm text-muted-foreground leading-relaxed">
-                    2972 Westheimer Rd. Santa Ana,<br />Illinois 85486
+                    30 N Gould St Ste R<br />Sheridan, WY 82801
                   </span>
                 </div>
               </div>

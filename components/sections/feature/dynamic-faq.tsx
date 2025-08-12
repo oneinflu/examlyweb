@@ -148,7 +148,7 @@ const categoryColors = {
   flexibility: 'text-brand-emerald',
   features: 'text-brand',
   technical: 'text-brand-fire',
-  planning: 'text-purple-500'
+  planning: 'text-brand-ultraviolet'  // Changed to use theme color
 };
 
 const categoryLabels = {

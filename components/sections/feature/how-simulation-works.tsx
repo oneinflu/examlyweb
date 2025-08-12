@@ -48,9 +48,9 @@ const steps: Step[] = [
     title: "Choose Your Certification",
     description: "Select from professional accounting certifications",
     options: ["CPA", "CMA", "Enrolled Agent"],
-    color: "blue",
-    bgColor: "bg-blue-50 dark:bg-blue-950/20",
-    borderColor: "border-blue-200 dark:border-blue-800"
+    color: "primary",
+    bgColor: "bg-primary/10 dark:bg-primary/20",
+    borderColor: "border-primary/30 dark:border-primary/40"
   },
   {
     id: 2,
@@ -58,9 +58,9 @@ const steps: Step[] = [
     title: "Pick the Exam Type",
     description: "Choose the format that matches your study goals",
     options: ["MCQs", "Essays", "Task-Based Simulations", "Full-Length Test"],
-    color: "emerald",
-    bgColor: "bg-emerald-50 dark:bg-emerald-950/20",
-    borderColor: "border-emerald-200 dark:border-emerald-800"
+    color: "primary",
+    bgColor: "bg-primary/10 dark:bg-primary/20",
+    borderColor: "border-primary/30 dark:border-primary/40"
   },
   {
     id: 3,
@@ -68,9 +68,9 @@ const steps: Step[] = [
     title: "Set Your Mode",
     description: "Customize your practice experience",
     options: ["Timed (real exam)", "Practice (learn as you go)"],
-    color: "purple",
-    bgColor: "bg-purple-50 dark:bg-purple-950/20",
-    borderColor: "border-purple-200 dark:border-purple-800"
+    color: "primary",
+    bgColor: "bg-primary/10 dark:bg-primary/20",
+    borderColor: "border-primary/30 dark:border-primary/40"
   },
   {
     id: 4,
@@ -78,9 +78,9 @@ const steps: Step[] = [
     title: "Review & Improve",
     description: "Get detailed analytics after each session",
     options: ["Performance insights", "Weak area identification", "Progress tracking"],
-    color: "orange",
-    bgColor: "bg-orange-50 dark:bg-orange-950/20",
-    borderColor: "border-orange-200 dark:border-orange-800"
+    color: "primary",
+    bgColor: "bg-primary/10 dark:bg-primary/20",
+    borderColor: "border-primary/30 dark:border-primary/40"
   }
 ];
 
@@ -118,20 +118,14 @@ export default function HowSimulationWorks({
     const baseClasses = "w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500";
     
     if (isActive) {
-      const activeColors = {
-        blue: "bg-blue-500 text-white shadow-lg shadow-blue-200 dark:shadow-blue-900/50",
-        emerald: "bg-emerald-500 text-white shadow-lg shadow-emerald-200 dark:shadow-emerald-900/50",
-        purple: "bg-purple-500 text-white shadow-lg shadow-purple-200 dark:shadow-purple-900/50",
-        orange: "bg-orange-500 text-white shadow-lg shadow-orange-200 dark:shadow-orange-900/50"
-      };
-      return `${baseClasses} ${activeColors[step.color as keyof typeof activeColors]} scale-110`;
+      return `${baseClasses} bg-primary text-primary-foreground shadow-lg shadow-primary/30 scale-110`;
     }
     
     const inactiveColors = {
-      blue: "bg-blue-100 dark:bg-blue-900/20 text-blue-600",
-      emerald: "bg-emerald-100 dark:bg-emerald-900/20 text-emerald-600",
-      purple: "bg-purple-100 dark:bg-purple-900/20 text-purple-600",
-      orange: "bg-orange-100 dark:bg-orange-900/20 text-orange-600"
+      "brand-electro": "bg-background border border-brand-electro/50 text-brand-electro",
+      "brand-emerald": "bg-background border border-brand-emerald/50 text-brand-emerald",
+      "brand-ultraviolet": "bg-background border border-brand-ultraviolet/50 text-brand-ultraviolet",
+      "brand-ember": "bg-background border border-brand-ember/50 text-brand-ember"
     };
     return `${baseClasses} ${inactiveColors[step.color as keyof typeof inactiveColors]}`;
   };
@@ -189,8 +183,8 @@ export default function HowSimulationWorks({
                       <Icon className="w-6 h-6" />
                     </div>
                     {isCompleted && (
-                      <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
-                        <CheckCircle className="w-3 h-3 text-white" />
+                      <div className="absolute -top-1 -right-1 w-5 h-5 bg-brand-emerald rounded-full flex items-center justify-center">
+                        <CheckCircle className="w-3 h-3 text-background" />
                       </div>
                     )}
                   </div>
@@ -234,8 +228,8 @@ export default function HowSimulationWorks({
                 key={step.id}
                 className={cn(
                   "transition-all duration-500 border-2",
-                  step.borderColor,
-                  step.bgColor,
+                  "border-primary/30 dark:border-primary/40",
+                  "bg-primary/10 dark:bg-primary/20",
                   isActive ? "opacity-100 scale-100" : "opacity-0 scale-95 absolute"
                 )}
               >
@@ -244,7 +238,7 @@ export default function HowSimulationWorks({
                     {/* Icon */}
                     <div className={cn(
                       "w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0",
-                      `bg-${step.color}-500 text-white shadow-lg`
+                      "bg-primary text-primary-foreground shadow-lg shadow-primary/30"
                     )}>
                       <Icon className="w-8 h-8" />
                     </div>
@@ -265,13 +259,10 @@ export default function HowSimulationWorks({
                             key={index}
                             className={cn(
                               "flex items-center gap-3 p-3 rounded-lg border transition-all duration-300 hover:shadow-md",
-                              "bg-background/50 border-border hover:border-primary/30"
+                              "bg-background/50 border-primary/20 hover:border-primary/50"
                             )}
                           >
-                            <div className={cn(
-                              "w-2 h-2 rounded-full",
-                              `bg-${step.color}-500`
-                            )} />
+                            <div className="w-2 h-2 rounded-full bg-primary" />
                             <span className="text-sm font-medium text-foreground">
                               {option}
                             </span>

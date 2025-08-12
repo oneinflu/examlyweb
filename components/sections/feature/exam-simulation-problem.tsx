@@ -56,14 +56,14 @@ const painPoints: PainPoint[] = [
     title: "Format Confusion",
     description: "Unfamiliar interface wastes precious exam minutes",
     percentage: "15min",
-    color: "orange"
+    color: "red"
   },
   {
     icon: Clock,
     title: "No Practice Environment",
     description: "First real exam conditions experience happens on test day",
     percentage: "1st",
-    color: "yellow"
+    color: "red"
   }
 ];
 
@@ -80,14 +80,14 @@ const solutions: Solution[] = [
     title: "Interface Mastery",
     description: "Familiar navigation allows focus on answering questions",
     improvement: "15min saved",
-    color: "blue"
+    color: "emerald"
   },
   {
     icon: TrendingUp,
     title: "Exam-Ready Mindset",
     description: "Multiple practice sessions create automatic exam behaviors",
     improvement: "92% pass rate",
-    color: "green"
+    color: "emerald"
   }
 ];
 

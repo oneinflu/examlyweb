@@ -51,9 +51,9 @@ const certifications: Certification[] = [
     id: "cpa",
     name: "CPA",
     fullName: "Certified Public Accountant",
-    color: "blue",
-    bgColor: "bg-blue-50 dark:bg-blue-950/20",
-    borderColor: "border-blue-200 dark:border-blue-800",
+    color: "primary",
+    bgColor: "bg-primary/20 dark:bg-primary/30",
+    borderColor: "border-primary/40 dark:border-primary/50",
     questionTypes: [
       {
         id: "mcq",
@@ -86,9 +86,9 @@ const certifications: Certification[] = [
     id: "cma",
     name: "CMA",
     fullName: "Certified Management Accountant",
-    color: "emerald",
-    bgColor: "bg-emerald-50 dark:bg-emerald-950/20",
-    borderColor: "border-emerald-200 dark:border-emerald-800",
+    color: "primary",
+    bgColor: "bg-primary/20 dark:bg-primary/30",
+    borderColor: "border-primary/40 dark:border-primary/50",
     questionTypes: [
       {
         id: "mcq",
@@ -112,9 +112,9 @@ const certifications: Certification[] = [
     id: "ea",
     name: "Enrolled Agent",
     fullName: "IRS Enrolled Agent",
-    color: "purple",
-    bgColor: "bg-purple-50 dark:bg-purple-950/20",
-    borderColor: "border-purple-200 dark:border-purple-800",
+    color: "primary",
+    bgColor: "bg-primary/20 dark:bg-primary/30",
+    borderColor: "border-primary/40 dark:border-primary/50",
     questionTypes: [
       {
         id: "mcq-tax",
@@ -166,12 +166,12 @@ export default function ExamFormatsSection({
   return (
     <Section className={cn("py-16 lg:py-24 relative overflow-hidden", className)} {...props}>
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/20 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-primary/5 to-background" />
       
       <div className="container max-w-7xl mx-auto relative">
         {/* Header */}
         <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-6 px-4 py-2 bg-primary/10 border-primary/20 text-primary">
+          <Badge variant="outline" className="mb-6 px-4 py-2 bg-primary/20 border-primary/30 text-primary">
             <Monitor className="w-4 h-4 mr-2" />
             Comprehensive Coverage
           </Badge>
@@ -195,13 +195,13 @@ export default function ExamFormatsSection({
                 className={cn(
                   "flex flex-col items-center gap-2 p-6 rounded-2xl border-2 transition-all duration-300 min-w-[160px]",
                   isActive 
-                    ? `${cert.borderColor} ${cert.bgColor} scale-105 shadow-lg` 
-                    : "border-border bg-background hover:border-primary/30 hover:scale-102"
+                    ? `border-primary/50 bg-primary/20 dark:bg-primary/30 scale-105 shadow-lg shadow-primary/20` 
+                    : "border-border bg-background hover:border-primary/30 hover:bg-primary/5 hover:scale-102"
                 )}
               >
                 <Award className={cn(
                   "w-8 h-8 transition-colors duration-300",
-                  isActive ? `text-${cert.color}-600` : "text-muted-foreground"
+                  isActive ? "text-primary" : "text-muted-foreground"
                 )} />
                 <div className="text-center">
                   <h3 className={cn(
@@ -233,14 +233,14 @@ export default function ExamFormatsSection({
                   className={cn(
                     "flex items-center gap-3 px-6 py-3 rounded-xl border transition-all duration-300",
                     isActive 
-                      ? `border-${activeCert.color}-200 bg-${activeCert.color}-50 dark:bg-${activeCert.color}-950/20 text-${activeCert.color}-700 dark:text-${activeCert.color}-300` 
-                      : "border-border bg-background hover:border-primary/30 text-muted-foreground hover:text-foreground"
+                      ? `border-primary/50 bg-primary/30 dark:bg-primary/40 text-primary shadow-sm shadow-primary/20` 
+                      : "border-border bg-background hover:border-primary/30 hover:bg-primary/5 text-muted-foreground hover:text-foreground"
                   )}
                 >
                   <Icon className="w-5 h-5" />
                   <span className="font-medium text-sm">{type.title}</span>
                   {type.difficulty && (
-                    <Badge variant="secondary" className="text-xs">
+                    <Badge variant="secondary" className="text-xs bg-primary/20 text-primary">
                       {type.difficulty}
                     </Badge>
                   )}
@@ -258,8 +258,8 @@ export default function ExamFormatsSection({
           )}>
             <Card className={cn(
               "border-2 shadow-xl",
-              activeCert.borderColor,
-              activeCert.bgColor
+              "border-primary/40 dark:border-primary/50",
+              "bg-primary/20 dark:bg-primary/30"
             )}>
               <div className="p-8 lg:p-12">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -268,7 +268,7 @@ export default function ExamFormatsSection({
                     <div className="flex items-center gap-4 mb-6">
                       <div className={cn(
                         "w-16 h-16 rounded-2xl flex items-center justify-center",
-                        `bg-${activeCert.color}-500 text-white shadow-lg`
+                        "bg-primary text-primary-foreground shadow-lg shadow-primary/30"
                       )}>
                         <activeType.icon className="w-8 h-8" />
                       </div>
@@ -291,10 +291,7 @@ export default function ExamFormatsSection({
                       <h4 className="font-semibold text-foreground mb-4">Key Features:</h4>
                       {activeType.features.map((feature, index) => (
                         <div key={index} className="flex items-center gap-3">
-                          <div className={cn(
-                            "w-2 h-2 rounded-full",
-                            `bg-${activeCert.color}-500`
-                          )} />
+                          <div className="w-2 h-2 rounded-full bg-primary" />
                           <span className="text-foreground font-medium">{feature}</span>
                         </div>
                       ))}
@@ -303,16 +300,10 @@ export default function ExamFormatsSection({
                   
                   {/* Visual Preview */}
                   <div className="relative">
-                    <Card className="p-6 bg-background/50 border-2 border-dashed border-muted-foreground/30">
+                    <Card className="p-6 bg-background/80 border-2 border-dashed border-muted-foreground/30 dark:bg-background/60">
                       <div className="text-center space-y-4">
-                        <div className={cn(
-                          "w-20 h-20 mx-auto rounded-2xl flex items-center justify-center",
-                          `bg-${activeCert.color}-100 dark:bg-${activeCert.color}-900/20`
-                        )}>
-                          <Play className={cn(
-                            "w-10 h-10",
-                            `text-${activeCert.color}-600`
-                          )} />
+                        <div className="w-20 h-20 mx-auto rounded-2xl flex items-center justify-center bg-primary/40 dark:bg-primary/50">
+                          <Play className="w-10 h-10 text-primary" />
                         </div>
                         <div>
                           <h4 className="font-bold text-lg text-foreground mb-2">
@@ -322,10 +313,7 @@ export default function ExamFormatsSection({
                             {activeType.preview}
                           </p>
                         </div>
-                        <button className={cn(
-                          "px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105",
-                          `bg-${activeCert.color}-500 hover:bg-${activeCert.color}-600 text-white shadow-lg`
-                        )}>
+                        <button className="px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/30">
                           Launch Demo
                         </button>
                       </div>

@@ -105,7 +105,7 @@ export default function BeforeAfterSection() {
           {/* Header Row */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="text-center">
-              <Badge variant="destructive" className="mb-4 text-sm px-4 py-2">
+              <Badge variant="outline" className="mb-4 text-sm px-4 py-2 text-red">
                 Without Learning Path
               </Badge>
               <h3 className="text-xl font-semibold text-muted-foreground">
@@ -113,7 +113,7 @@ export default function BeforeAfterSection() {
               </h3>
             </div>
             <div className="text-center">
-              <Badge variant="default" className="mb-4 text-sm px-4 py-2 bg-brand-emerald hover:bg-brand-emerald/90">
+              <Badge variant="outline" className="mb-4 text-sm px-4 py-2 bg-brand-emerald hover:bg-brand-emerald/90">
                 With Learning Path
               </Badge>
               <h3 className="text-xl font-semibold">
