@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { Section } from "@/components/ui/section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { 
   ArrowLeft, 
   ArrowRight, 
@@ -13,8 +12,7 @@ import {
   Users, 
   BarChart3, 
   Calculator, 
-  LayoutDashboard,
-  ExternalLink
+  LayoutDashboard
 } from "lucide-react";
 import {
   Carousel,
@@ -79,6 +77,18 @@ const featureSlides = [
   }
 ];
 
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
+
 export default function PartnerFeatureCarousel() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -94,13 +104,6 @@ export default function PartnerFeatureCarousel() {
       setCurrent(api.selectedScrollSnap());
     });
   }, [api]);
-
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <Section className="py-20 lg:py-32 relative overflow-hidden">
@@ -196,16 +199,6 @@ export default function PartnerFeatureCarousel() {
                               ))}
                             </div>
                           </div>
-                          
-                          {/* Learn More Button */}
-                          <Button 
-                            variant="outline" 
-                            className="mt-6 w-full justify-between hover:bg-primary hover:text-white group"
-                            onClick={() => scrollToSection(slide.learnMoreId)}
-                          >
-                            Learn More
-                            <ExternalLink className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-                          </Button>
                         </CardContent>
                       </Card>
                     </div>

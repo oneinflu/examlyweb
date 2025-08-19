@@ -1,247 +1,71 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { cn } from "@/lib/utils";
-import { CircleCheckBig, User, Users, ArrowRight } from "lucide-react";
+import { CircleCheckBig } from "lucide-react";
 import { Button } from "../../ui/button";
 import { Section } from "../../ui/section";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
+import { courseConfigs, type CourseConfig } from "@/lib/config/plans";
 
-type Plan = {
-  name: string;
-  description: string;
-  icon?: React.ReactNode;
-  price: string;
-  cta: {
-    variant: "outline" | "default" | "glow";
-    label: string;
-    href: string;
-  };
-  features: string[];
-  featured: boolean;
-  classes?: string;
-};
-
-type CourseConfig = {
-  name: string;
-  fullName: string;
-  plans: Plan[];
-};
-
-const courseConfigs: Record<string, CourseConfig> = {
-  cma: {
-    name: "CMA",
-    fullName: "Certified Management Accountant",
-    plans: [
-      {
-        name: "Essential CMA Review",
-        description: "Self-paced CMA Exam Prep course with comprehensive learning material and platform access.",
-        price: "$1,599.00",
-        cta: {
-          variant: "outline",
-          label: "Learn More",
-          href: "/cma/prep/essential",
-        },
-        features: [
-          "CMA Part 1 & 2 HD video lectures",
-          "Digital eBooks & concept notes",
-          "Performance analytics dashboard",
-          "Chapter-wise practice questions",
-          "24-month course access",
-        ],
-        featured: false,
-        classes: "glass-1 to-transparent dark:glass-2 hidden lg:flex",
-      },
-      {
-        name: "Pro CMA Review",
-        description: "Advanced CMA Exam Prep with live classes, mentorship, and extended access till you're confident.",
-        icon: <User className="h-4 w-4" />,
-        price: "$1,799.00",
-        cta: {
-          variant: "default",
-          label: "Learn More",
-          href: "/cma/prep/pro",
-        },
-        features: [
-          "Everything in Essential Plan",
-          "Live weekly doubt-clearing sessions",
-          "Study planner & milestone tracking",
-          "Mock tests & detailed performance reviews",
-          "48-month course access",
-        ],
-        featured: true,
-        classes:
-          "glass-3 from-card/100 to-card/100 dark:glass-4 after:content-[''] after:absolute after:-top-[128px] after:left-1/2 after:h-[128px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:rounded-[50%] after:bg-brand-foreground/70 after:blur-[72px]",
-      },
-      {
-        name: "Ultimate QBank",
-        description: "Master the CMA exam with our exhaustive Question Bank designed to simulate real exam scenarios.",
-        icon: <Users className="h-4 w-4" />,
-        price: "$1,299.00",
-        cta: {
-          variant: "glow",
-          label: "Learn More",
-          href: "/cma/qbank",
-        },
-        features: [
-          "3,000+ exam-style MCQs & essays",
-          "Topic-wise & full-length mock tests",
-          "Detailed solutions & explanations",
-          "Performance reports & analytics",
-          "Access till you pass guarantee",
-        ],
-        featured: false,
-        classes:
-          "glass-2 to-trasparent dark:glass-3 after:content-[''] after:absolute after:-top-[128px] after:left-1/2 after:h-[128px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:rounded-[50%] dark:after:bg-foreground/30 after:blur-[72px]",
-      },
-    ],
-  },
-  cpa: {
-    name: "CPA",
-    fullName: "Certified Public Accountant",
-    plans: [
-      {
-        name: "Essential CPA Review",
-        description: "Self-paced CPA Exam Prep course with comprehensive learning material and platform access.",
-        price: "$1,599.00",
-        cta: {
-          variant: "outline",
-          label: "Learn More",
-          href: "/cpa/prep/essential",
-        },
-        features: [
-          "CPA FAR, AUD, REG & BEC video lectures",
-          "Digital eBooks & concept notes",
-          "Performance analytics dashboard",
-          "Chapter-wise practice questions",
-          "24-month course access",
-        ],
-        featured: false,
-        classes: "glass-1 to-transparent dark:glass-2 hidden lg:flex",
-      },
-      {
-        name: "Pro CPA Review",
-        description: "Advanced CPA Exam Prep with live classes, mentorship, and extended access till you're confident.",
-        icon: <User className="h-4 w-4" />,
-        price: "$1,799.00",
-        cta: {
-          variant: "default",
-          label: "Learn More",
-          href: "/cpa/prep/pro",
-        },
-        features: [
-          "Everything in Essential Plan",
-          "Live weekly doubt-clearing sessions",
-          "Study planner & milestone tracking",
-          "Mock tests & detailed performance reviews",
-          "48-month course access",
-        ],
-        featured: true,
-        classes:
-          "glass-3 from-card/100 to-card/100 dark:glass-4 after:content-[''] after:absolute after:-top-[128px] after:left-1/2 after:h-[128px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:rounded-[50%] after:bg-brand-foreground/70 after:blur-[72px]",
-      },
-      {
-        name: "Ultimate QBank",
-        description: "Master the CPA exam with our exhaustive Question Bank designed to simulate real exam scenarios.",
-        icon: <Users className="h-4 w-4" />,
-        price: "$1,299.00",
-        cta: {
-          variant: "glow",
-          label: "Learn More",
-          href: "/cpa/qbank",
-        },
-        features: [
-          "5,000+ exam-style MCQs & simulations",
-          "Topic-wise & full-length mock tests",
-          "Detailed solutions & explanations",
-          "Performance reports & analytics",
-          "Access till you pass guarantee",
-        ],
-        featured: false,
-        classes:
-          "glass-2 to-trasparent dark:glass-3 after:content-[''] after:absolute after:-top-[128px] after:left-1/2 after:h-[128px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:rounded-[50%] dark:after:bg-foreground/30 after:blur-[72px]",
-      },
-    ],
-  },
-  ea: {
-    name: "EA",
-    fullName: "Enrolled Agent",
-    plans: [
-      {
-        name: "Essential EA Review",
-        description: "Self-paced EA Exam Prep course with comprehensive learning material and platform access.",
-        price: "$1,399.00",
-        cta: {
-          variant: "outline",
-          label: "Learn More",
-          href: "/ea/prep/essential",
-        },
-        features: [
-          "EA Parts 1, 2 & 3 HD video lectures",
-          "Digital eBooks & concept notes",
-          "Performance analytics dashboard",
-          "Chapter-wise practice questions",
-          "24-month course access",
-        ],
-        featured: false,
-        classes: "glass-1 to-transparent dark:glass-2 hidden lg:flex",
-      },
-      {
-        name: "Pro EA Review",
-        description: "Advanced EA Exam Prep with live classes, mentorship, and extended access till you're confident.",
-        icon: <User className="h-4 w-4" />,
-        price: "$1,599.00",
-        cta: {
-          variant: "default",
-          label: "Learn More",
-          href: "/ea/prep/pro",
-        },
-        features: [
-          "Everything in Essential Plan",
-          "Live weekly doubt-clearing sessions",
-          "Study planner & milestone tracking",
-          "Mock tests & detailed performance reviews",
-          "48-month course access",
-        ],
-        featured: true,
-        classes:
-          "glass-3 from-card/100 to-card/100 dark:glass-4 after:content-[''] after:absolute after:-top-[128px] after:left-1/2 after:h-[128px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:rounded-[50%] after:bg-brand-foreground/70 after:blur-[72px]",
-      },
-      {
-        name: "Ultimate QBank",
-        description: "Master the EA exam with our exhaustive Question Bank designed to simulate real exam scenarios.",
-        icon: <Users className="h-4 w-4" />,
-        price: "$1,099.00",
-        cta: {
-          variant: "glow",
-          label: "Learn More",
-          href: "/ea/qbank",
-        },
-        features: [
-          "2,500+ exam-style MCQs & simulations",
-          "Topic-wise & full-length mock tests",
-          "Detailed solutions & explanations",
-          "Performance reports & analytics",
-          "Access till you pass guarantee",
-        ],
-        featured: false,
-        classes:
-          "glass-2 to-trasparent dark:glass-3 after:content-[''] after:absolute after:-top-[128px] after:left-1/2 after:h-[128px] after:w-[100%] after:max-w-[960px] after:-translate-x-1/2 after:rounded-[50%] dark:after:bg-foreground/30 after:blur-[72px]",
-      },
-    ],
-  },
+const getMonthlyPayment = (price: string) => {
+  const numericPrice = parseFloat(price.replace(/[^0-9.]/g, ''));
+  return Math.round(numericPrice / 12);
 };
 
 export default function Plan() {
   const [selectedCourse, setSelectedCourse] = useState<string>("cpa");
+  const [addedItems, setAddedItems] = useState<string[]>([]);
   const config = courseConfigs[selectedCourse.toLowerCase()] || courseConfigs.cpa;
   const plans = config.plans;
 
-  // Helper function to calculate monthly payment
-  const getMonthlyPayment = (price: string) => {
-    const numericPrice = parseFloat(price.replace('$', '').replace(',', ''));
-    return (numericPrice / 12).toFixed(0);
-  };
+  useEffect(() => {
+    const guestCart = JSON.parse(localStorage.getItem("guestCart") || "[]");
+    const addedNames = guestCart.map((item: any) => item.name);
+    setAddedItems(addedNames);
+  }, []);
+
+  const handleAddToCart = (planName: string) => {
+    // Check if item is already in cart
+    if (addedItems.includes(planName)) {
+      return;
+    }
+
+    // Get existing cart items from localStorage
+    const existingCart = localStorage.getItem('guestCart')
+    const guestCart = existingCart ? JSON.parse(existingCart) : []
+    
+    // Find the plan and format the price correctly
+    const plan = plans.find(plan => plan.name === planName)
+    const numericPrice = plan ? parseFloat(plan.price.replace(/[^0-9.]/g, '')) : 0
+    
+    // Determine plan type based on name
+    let planType = 'essential'
+    if (planName.toLowerCase().includes('pro')) {
+      planType = 'pro'
+    } else if (planName.toLowerCase().includes('ultimate')) {
+      planType = 'premium'
+    }
+    
+    // Add new item with properly formatted price and plan type
+    guestCart.push({
+      name: planName,
+      course: selectedCourse.toUpperCase(),
+      price: numericPrice,
+      type: planType,
+      addedAt: new Date().toISOString()
+    })
+    
+    // Update localStorage and state
+    localStorage.setItem('guestCart', JSON.stringify(guestCart))
+    setAddedItems([...addedItems, planName])
+    
+    // Show toast and dispatch event
+    toast.success(`${planName} added to cart`)
+    window.dispatchEvent(new Event('cartUpdated'))
+  }
 
   return (
     <Section>
@@ -309,23 +133,22 @@ export default function Plan() {
                       <span>
                         Or as low as ${getMonthlyPayment(plan.price)}/month with flex pay
                       </span>
-                      <ArrowRight className="h-3 w-3" />
                     </div>
                   </div>
                 </div>
-                <Button variant={plan.cta.variant} size="lg" asChild>
-                  <Link href={plan.cta.href}>{plan.cta.label}</Link>
+                <Button 
+                  variant={addedItems.includes(plan.name) ? "outline" : plan.cta.variant} 
+                  size="lg"
+                  onClick={() => handleAddToCart(plan.name)}
+                  disabled={addedItems.includes(plan.name)}
+                >
+                  {addedItems.includes(plan.name) ? "Added to Cart" : plan.cta.label}
                 </Button>
                 <hr className="border-input" />
-              </div>
-              <div>
                 <ul className="flex flex-col gap-2">
-                  {plan.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className="flex items-center gap-2 text-sm"
-                    >
-                      <CircleCheckBig className="h-4 w-4 shrink-0 text-muted-foreground" />
+                  {plan.features.map((feature, index) => (
+                    <li key={index} className="flex items-center gap-2 text-sm">
+                      <CircleCheckBig className="h-5 w-5 text-brand" />
                       {feature}
                     </li>
                   ))}

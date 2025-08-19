@@ -18,10 +18,12 @@ import {
   BookOpen,
   Target
 } from "lucide-react";
+import FreeTrialModal from "@/components/sections/modals/free-trial-modal";
 
 export default function MainHero() {
   const [mounted, setMounted] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
   const [animatedValues, setAnimatedValues] = useState({
     students: 0,
     courses: 0,
@@ -155,19 +157,19 @@ export default function MainHero() {
               <Button 
                 size="lg" 
                 className="group bg-primary hover:bg-primary/90 text-white px-6 md:px-8 py-5 md:py-6 text-base md:text-lg font-medium rounded-md shadow-lg transition-all duration-300 w-full sm:w-auto"
+              onClick={() => setOpenModal(true)}
               >
                 Start Your Free Trial
-                <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                <Image 
+                  src="/arrow.svg" 
+                  alt="Arrow right" 
+                  width={20} 
+                  height={20} 
+                  className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform duration-300"
+                />
               </Button>
               
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="border-2 border-primary/50 hover:border-primary hover:bg-primary/5 text-primary px-4 md:px-6 py-5 md:py-6 text-base md:text-lg font-medium rounded-md transition-all duration-300 w-full sm:w-auto"
-              >
-                <PlayCircle className="mr-2 w-4 h-4 md:w-5 md:h-5" />
-                Watch Demo
-              </Button>
+              
             </div>
             
             {/* Trust Indicators with animation */}
@@ -247,6 +249,15 @@ export default function MainHero() {
           </div>
         </div>
       </div>
+      
+      {/* Update the Start Your Free Trial button */}
+     
+      
+      {/* Add the modal component */}
+      <FreeTrialModal open={openModal} onOpenChange={setOpenModal} />
+      
+      {/* Trust Indicators with animation */}
+      
     </Section>
   );
 }

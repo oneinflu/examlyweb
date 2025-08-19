@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 "use client";
 
 import { useEffect, useState, useRef } from "react";
@@ -69,8 +70,8 @@ export default function MissionStorytelling() {
               <p className="text-lg text-muted-foreground mb-6">
                 We envision a world where every ambitious professional has the tools and support they need to excel in their certification exams and advance their careers with confidence and competence.
               </p>
-              <Button variant="outline" size="lg" className="mt-2">
-                Learn About Our Story
+              <Button variant="outline" size="lg" className="mt-2" asChild>
+                <a href="/about">Learn About Our Story</a>
               </Button>
             </div>
           </motion.div>

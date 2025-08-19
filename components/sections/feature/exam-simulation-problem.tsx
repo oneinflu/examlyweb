@@ -49,21 +49,21 @@ const painPoints: PainPoint[] = [
     title: "Exam Anxiety Paralysis",
     description: "Students freeze under timed pressure despite knowing the material",
     percentage: "73%",
-    color: "red"
+    color: "#CEAE2D"
   },
   {
     icon: FileQuestion,
     title: "Format Confusion",
     description: "Unfamiliar interface wastes precious exam minutes",
     percentage: "15min",
-    color: "red"
+    color: "#CEAE2D"
   },
   {
     icon: Clock,
     title: "No Practice Environment",
     description: "First real exam conditions experience happens on test day",
     percentage: "1st",
-    color: "red"
+    color: "#CEAE2D"
   }
 ];
 
@@ -99,28 +99,26 @@ export default function ExamSimulationProblem({
 }: ExamSimulationProblemProps) {
   const [hoveredCard, setHoveredCard] = useState<{ side: 'problem' | 'solution', index: number } | null>(null);
 
+  // Update the color classes in getColorClasses function
   const getColorClasses = (color: string, type: 'problem' | 'solution') => {
-    const baseColors = {
-      red: type === 'problem' ? 'border-red-200 bg-red-50/50 dark:border-red-800 dark:bg-red-950/10' : '',
-      orange: type === 'problem' ? 'border-orange-200 bg-orange-50/50 dark:border-orange-800 dark:bg-orange-950/10' : '',
-      yellow: type === 'problem' ? 'border-yellow-200 bg-yellow-50/50 dark:border-yellow-800 dark:bg-yellow-950/10' : '',
-      emerald: type === 'solution' ? 'border-emerald-200 bg-emerald-50/50 dark:border-emerald-800 dark:bg-emerald-950/10' : '',
-      blue: type === 'solution' ? 'border-blue-200 bg-blue-50/50 dark:border-blue-800 dark:bg-blue-950/10' : '',
-      green: type === 'solution' ? 'border-green-200 bg-green-50/50 dark:border-green-800 dark:bg-green-950/10' : ''
-    };
-    return baseColors[color as keyof typeof baseColors] || '';
+  const baseColors = {
+    '#CEAE2D': type === 'problem' ? 'border-[#CEAE2D] bg-[#CEAE2D]/10 dark:border-[#CEAE2D]/80 dark:bg-[#CEAE2D]/5' : '',
+    emerald: type === 'solution' ? 'border-emerald-200 bg-emerald-50/50 dark:border-emerald-800 dark:bg-emerald-950/10' : '',
+    blue: type === 'solution' ? 'border-blue-200 bg-blue-50/50 dark:border-blue-800 dark:bg-blue-950/10' : '',
+    green: type === 'solution' ? 'border-green-200 bg-green-50/50 dark:border-green-800 dark:bg-green-950/10' : ''
   };
-
+  return baseColors[color as keyof typeof baseColors] || '';
+  };
+  
+  // Update the icon classes in getIconClasses function
   const getIconClasses = (color: string, type: 'problem' | 'solution') => {
-    const iconColors = {
-      red: type === 'problem' ? 'bg-red-100 dark:bg-red-900/20 text-red-600' : '',
-      orange: type === 'problem' ? 'bg-orange-100 dark:bg-orange-900/20 text-orange-600' : '',
-      yellow: type === 'problem' ? 'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-600' : '',
-      emerald: type === 'solution' ? 'bg-emerald-100 dark:bg-emerald-900/20 text-emerald-600' : '',
-      blue: type === 'solution' ? 'bg-blue-100 dark:bg-blue-900/20 text-blue-600' : '',
-      green: type === 'solution' ? 'bg-green-100 dark:bg-green-900/20 text-green-600' : ''
-    };
-    return iconColors[color as keyof typeof iconColors] || '';
+  const iconColors = {
+    '#CEAE2D': type === 'problem' ? 'bg-[#CEAE2D]/10 dark:bg-[#CEAE2D]/20 text-[#CEAE2D]' : '',
+    emerald: type === 'solution' ? 'bg-emerald-100 dark:bg-emerald-900/20 text-emerald-600' : '',
+    blue: type === 'solution' ? 'bg-blue-100 dark:bg-blue-900/20 text-blue-600' : '',
+    green: type === 'solution' ? 'bg-green-100 dark:bg-green-900/20 text-green-600' : ''
+  };
+  return iconColors[color as keyof typeof iconColors] || '';
   };
 
   return (
@@ -150,8 +148,8 @@ export default function ExamSimulationProblem({
           <div className="space-y-6">
             {/* Section Header */}
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-10 h-10 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center">
-                <TrendingDown className="w-5 h-5 text-red-600" />
+              <div className="w-10 h-10 bg-[#CEAE2D]/10 dark:bg-[#CEAE2D]/20 rounded-full flex items-center justify-center">
+                <TrendingDown className="w-5 h-5 text-[#CEAE2D]" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-foreground">Without Simulation</h3>
@@ -188,7 +186,7 @@ export default function ExamSimulationProblem({
                             {point.title}
                           </h4>
                           <div className="text-right flex-shrink-0">
-                            <div className="text-lg font-bold text-red-600">
+                            <div className="text-lg font-bold text-[#CEAE2D]">
                               {point.percentage}
                             </div>
                             <div className="text-xs text-muted-foreground">
@@ -207,10 +205,10 @@ export default function ExamSimulationProblem({
             </div>
 
             {/* Problem Summary */}
-            <Card className="p-6 bg-red-50 dark:bg-red-950/20 border-red-200 dark:border-red-800">
+            <Card className="p-6 bg-[#CEAE2D]/10 dark:bg-[#CEAE2D]/20 border-[#CEAE2D] dark:border-[#CEAE2D]/80">
               <div className="text-center">
-                <div className="text-3xl font-bold text-red-600 mb-2">65%</div>
-                <div className="text-sm text-red-700 dark:text-red-400 font-medium">
+                <div className="text-3xl font-bold text-[#CEAE2D] mb-2">65%</div>
+                <div className="text-sm text-[#CEAE2D] dark:text-[#CEAE2D] font-medium">
                   Average pass rate without simulation
                 </div>
               </div>

@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { Menu } from "lucide-react";
-import { useState } from "react";
+import { Menu, ShoppingCart } from "lucide-react";
 import Navigation from "../../ui/navigation";
 import { Button, type ButtonProps } from "../../ui/button";
+import { Badge } from "../../ui/badge";
 import {
   Navbar as NavbarComponent,
   NavbarLeft,
@@ -43,17 +43,43 @@ export default function Navbar({
   homeUrl = "/",
   actions = [
     {
-      text: "Try for free",
-      href: "#",
+      text: "",
+      href: "/cart",
       isButton: true,
-      variant: "default",
+      variant: "outline",
+      icon: <ShoppingCart className="h-5 w-5" />,
     },
+   
   ],
   showNavigation = true,
   customNavigation,
   className,
 }: NavbarProps) {
   const [openSection, setOpenSection] = useState<string | null>(null);
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    // Update cart count when component mounts and when localStorage changes
+    const updateCartCount = () => {
+      const cart = localStorage.getItem('guestCart');
+      const cartItems = cart ? JSON.parse(cart) : [];
+      setCartCount(cartItems.length);
+    };
+
+    // Initial count
+    updateCartCount();
+
+    // Listen for storage changes
+    window.addEventListener('storage', updateCartCount);
+    
+    // Custom event listener for cart updates
+    window.addEventListener('cartUpdated', updateCartCount);
+
+    return () => {
+      window.removeEventListener('storage', updateCartCount);
+      window.removeEventListener('cartUpdated', updateCartCount);
+    };
+  }, []);
 
   const toggleSection = (section: string) => {
     setOpenSection(openSection === section ? null : section);
@@ -61,43 +87,49 @@ export default function Navbar({
 
   return (
     <>
-      <header className={cn("absolute top-0 z-50 w-full p-2", className)}>
-        <div className="mx-auto max-w-container">
-          <NavbarComponent className="p-2">
+      <div className="fixed top-0 z-50 w-full bg-background/80 backdrop-blur-sm">
+        <div className="mx-auto max-w-container p-2">
+          <NavbarComponent className="p-2 flex items-center justify-between">
             <NavbarLeft>
-              
-              <Link
-                href="/"
-                className="flex items-center gap-2 text-xl font-bold"
-                passHref
-              >
-                
+              <Link href={homeUrl} className="flex items-center gap-2 text-xl font-bold">
                 {logo}
-               
               </Link>
             </NavbarLeft>
-            <NavbarRight>
+            <div className="hidden md:flex items-center justify-center flex-1">
+              <div className="bg-background/30 border-border dark:border-border/15 rounded-xl border p-2 backdrop-blur-lg">
+                {customNavigation || <Navigation />}
+              </div>
+            </div>
+            <NavbarRight className="flex items-center gap-4">
               {actions.map((action, index) =>
                 action.isButton ? (
-                  <Button
-                    key={index}
-                    variant={action.variant || "default"}
-                    asChild
+                  <Link 
+                    key={index} 
+                    href={action.href} 
+                    className="inline-flex relative"
                   >
-                    <a href={action.href}>
+                    <Button variant={action.variant || "default"}>
                       {action.icon}
                       {action.text}
                       {action.iconRight}
-                    </a>
-                  </Button>
+                    </Button>
+                    {action.href === '/cart' && cartCount > 0 && (
+                      <Badge 
+                        variant="default" 
+                        className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs bg-primary text-primary-foreground font-medium"
+                      >
+                        {cartCount}
+                      </Badge>
+                    )}
+                  </Link>
                 ) : (
-                  <a
+                  <Link
                     key={index}
                     href={action.href}
                     className="hidden text-sm md:block"
                   >
                     {action.text}
-                  </a>
+                  </Link>
                 ),
               )}
               <Sheet>
@@ -113,13 +145,9 @@ export default function Navbar({
                 </SheetTrigger>
                 <SheetContent side="right">
                   <nav className="grid gap-6 text-lg font-medium">
-                    <a
-                      href={homeUrl}
-                      className="flex items-center gap-2 text-xl font-bold"
-                    >
-                      <span>{name}</span>
-                    </a>
                     
+                    
+                    {/* Mobile menu content */}
                     {/* Exam Prep Section */}
                     <div className="space-y-4">
                       <button 
@@ -131,15 +159,15 @@ export default function Navbar({
                       </button>
                       {openSection === 'examPrep' && (
                         <div className="grid gap-3 pl-3">
-                          <a href="/cma" className="text-muted-foreground hover:text-foreground">
+                          <Link href="/cma" className="text-muted-foreground hover:text-foreground">
                             CMA Exam Prep
-                          </a>
-                          <a href="/cpa" className="text-muted-foreground hover:text-foreground">
+                          </Link>
+                          <Link href="/cpa" className="text-muted-foreground hover:text-foreground">
                             CPA Exam Prep
-                          </a>
-                          <a href="/ea" className="text-muted-foreground hover:text-foreground">
+                          </Link>
+                          <Link href="/ea" className="text-muted-foreground hover:text-foreground">
                             EA Exam Prep
-                          </a>
+                          </Link>
                         </div>
                       )}
                     </div>
@@ -155,44 +183,36 @@ export default function Navbar({
                       </button>
                       {openSection === 'features' && (
                         <div className="grid gap-3 pl-3">
-                          <a href="/feature/personalized-learning" className="text-muted-foreground hover:text-foreground">
+                          <Link href="/feature/personalized-learning" className="text-muted-foreground hover:text-foreground">
                             Personalized Learning Paths
-                          </a>
-                          <a href="/feature/exam-simulation" className="text-muted-foreground hover:text-foreground">
+                          </Link>
+                          <Link href="/feature/exam-simulation" className="text-muted-foreground hover:text-foreground">
                             Real Exam Simulations
-                          </a>
-                         
-                          <a href="/feature/self-assessment" className="text-muted-foreground hover:text-foreground">
+                          </Link>
+                          <Link href="/feature/self-assessment" className="text-muted-foreground hover:text-foreground">
                             Self-Assessment & Analytics
-                          </a>
-                         
-                          <a href="/feature/offline-access" className="text-muted-foreground hover:text-foreground">
+                          </Link>
+                          <Link href="/feature/offline-access" className="text-muted-foreground hover:text-foreground">
                             Offline Access Anywhere
-                          </a>
+                          </Link>
                         </div>
                       )}
                     </div>
 
-                    <a href="/why-examly" className="text-muted-foreground hover:text-foreground">
+                    <Link href="/why-examly" className="text-muted-foreground hover:text-foreground">
                       Why Examly
-                    </a>
-                    <a href="/become-partner" className="text-muted-foreground hover:text-foreground">
+                    </Link>
+                    <Link href="/become-partner" className="text-muted-foreground hover:text-foreground">
                       Become a Partner
-                    </a>
+                    </Link>
                   </nav>
                 </SheetContent>
               </Sheet>
             </NavbarRight>
           </NavbarComponent>
         </div>
-      </header>
-      {showNavigation && (
-        <div className="max-w-container sticky top-0 z-50 mx-auto hidden items-center justify-center p-3 md:flex">
-          <NavbarComponent className="bg-background/30 border-border dark:border-border/15 rounded-xl border p-1 backdrop-blur-lg">
-            {customNavigation || <Navigation />}
-          </NavbarComponent>
-        </div>
-      )}
+      </div>
+      <div className="h-[72px]"></div>
     </>
   );
 }

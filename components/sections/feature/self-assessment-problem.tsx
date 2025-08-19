@@ -131,7 +131,7 @@ export default function SelfAssessmentProblem() {
         {/* Problem Cards - Diagonal Layout */}
         <div className="mb-20">
           <h3 className="text-2xl md:text-3xl font-bold text-center mb-12">
-            The Study Struggle is <span className="text-destructive">Real</span>
+            The Study Struggle is <span className="text-[#CEAE2D]">Real</span>
           </h3>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -140,7 +140,7 @@ export default function SelfAssessmentProblem() {
               return (
                 <Card 
                   key={index}
-                  className="p-8 border-0 bg-gradient-to-br from-destructive/10 to-destructive/5 backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:shadow-2xl cursor-pointer group"
+                  className="p-8 border-0 bg-gradient-to-br from-[#CEAE2D]/10 to-[#CEAE2D]/5 backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:shadow-2xl cursor-pointer group"
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                   style={{
@@ -149,13 +149,13 @@ export default function SelfAssessmentProblem() {
                   }}
                 >
                   <div className="text-center space-y-4">
-                    <div className="w-16 h-16 mx-auto bg-destructive/10 rounded-2xl flex items-center justify-center group-hover:bg-destructive/20 transition-colors">
-                      <IconComponent className="w-8 h-8 text-destructive" />
+                    <div className="w-16 h-16 mx-auto bg-[#CEAE2D]/10 rounded-2xl flex items-center justify-center group-hover:bg-[#CEAE2D]/20 transition-colors">
+                      <IconComponent className="w-8 h-8 text-[#CEAE2D]" />
                     </div>
                     <h4 className="text-xl font-bold">{card.title}</h4>
                     <p className="text-muted-foreground">{card.description}</p>
                     <div className="pt-4 border-t border-border">
-                      <div className="text-3xl font-bold text-destructive mb-1">{card.stat}</div>
+                      <div className="text-3xl font-bold text-[#CEAE2D] mb-1">{card.stat}</div>
                       <div className="text-sm text-muted-foreground">{card.statLabel}</div>
                     </div>
                   </div>

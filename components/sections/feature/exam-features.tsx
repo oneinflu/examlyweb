@@ -9,11 +9,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { 
-  ChevronRight, 
   ChevronLeft,
+ 
+  FileText, 
+  ChevronRight,
   ArrowRight, 
   BookOpen, 
-  FileText, 
+  
   PenTool,
   BarChart3, 
   Sparkles, 
@@ -358,12 +360,35 @@ export default function ExamFeatures({
                     
                     {/* Learn More Link */}
                     <div className="mt-auto">
+                    
                       <Button 
                         variant="ghost" 
                         className={`group ${features[activeIndex].textColor} hover:${features[activeIndex].hoverColor} hover:bg-transparent p-0 w-full justify-between`}
                       >
                         <span>Learn More</span>
-                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        <Image 
+                          src="/arrow.svg" 
+                          alt="Arrow right" 
+                          width={16} 
+                          height={16} 
+                          className="h-4 w-4 transition-transform group-hover:translate-x-1" 
+                        />
+                      </Button>
+                      
+                      
+                      <Button 
+                        variant="outline" 
+                        size="icon" 
+                        className="rounded-full" 
+                        onClick={handleNext}
+                      >
+                        <Image 
+                          src="/arrow.svg" 
+                          alt="Arrow right" 
+                          width={16} 
+                          height={16} 
+                          className="h-4 w-4" 
+                        />
                       </Button>
                     </div>
                   </div>
@@ -629,3 +654,5 @@ function OfflineAccessPreview({ examType }: { examType: ExamType }) {
     </div>
   );
 }
+
+// Add this helper function at the top of the file, after imports

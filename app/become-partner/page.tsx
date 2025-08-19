@@ -19,7 +19,7 @@ export default function PartnerPage() {
       <PartnerBenefitsSection />
       <PartnerDemoScheduler />
       <PartnerFAQSection />
-      <PartnerFinalCTA />
+    
       <FooterSection />
     </div>
   );

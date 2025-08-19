@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { CheckCircle, Star } from "lucide-react"; // Remove ArrowRight from imports
 import Image from "next/image";
-import { ArrowRight, CheckCircle, Star } from "lucide-react";
 
 type CourseHeroProps = {
   examType: string; // "CMA", "CPA", "EA"
@@ -183,7 +183,13 @@ export default function CourseHero({ examType, subtitle, logoSrc }: CourseHeroPr
                 className={`bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg font-medium rounded-md shadow-lg transition-all duration-300 group`}
               >
                 Start Your {examType} Prep Now
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                <Image 
+                  src="/arrow.svg" 
+                  alt="Arrow right" 
+                  width={20} 
+                  height={20} 
+                  className="ml-2 w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform duration-300" 
+                />
               </Button>
               
               <Button 

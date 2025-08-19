@@ -14,6 +14,7 @@ import FooterSection from "@/components/sections/footer/5-columns";
 import MainHero from "@/components/sections/hero/main-hero";
 
 import Navbar from "@/components/sections/navbar/centered";
+import { NewHeader } from "@/components/sections/navbar/new-header";
 import Plan from "@/components/sections/pricing/plan";
 
 import SuccessStories from "@/components/sections/testimonials/success-stories";
@@ -25,7 +26,7 @@ export default function Home() {
    <DemoCarousel />
 <ValueProposition />
    <MissionStorytelling /> 
-   <CoreFeatures />
+  
    <SuccessStoriesSection />
    <Plan />
    <MinimalisticFAQ />

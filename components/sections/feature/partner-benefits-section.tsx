@@ -153,19 +153,10 @@ export default function PartnerBenefitsSection() {
                   <p className="text-muted-foreground">
                     {benefit.description}
                   </p>
-                  
-                  {/* Learn More Link */}
-                  <div className={cn(
-                    "flex items-center gap-1 text-sm font-medium mt-4 transition-all duration-300",
-                    isHovered 
-                      ? `${benefit.color} translate-x-1` 
-                      : "text-muted-foreground group-hover:text-brand group-hover:translate-x-1"
-                  )}>
-                    <span>Learn more</span>
-                    <ArrowRightIcon className="w-3 h-3" />
-                  </div>
                 </div>
                 
+                {/* Remove the Learn More Link section */}
+                                
                 {/* Animated border */}
                 <div className={cn(
                   "absolute inset-0 rounded-lg border-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300",

@@ -31,46 +31,46 @@ interface DataProof {
 const studentTestimonials: StudentTestimonial[] = [
   {
     id: "1",
-    name: "Priya Sharma",
+    name: "Emily Thompson",
     examType: "CA Foundation",
     scoreImprovement: "+35%",
     previousScore: 45,
     finalScore: 80,
     text: "Examly's Learning Path helped me identify my weak areas and create a focused study plan. The AI-driven recommendations were spot-on, and I could see my progress improving week by week.",
-    image: "/avatars/priya.jpg",
+    image: "https://randomuser.me/api/portraits/women/1.jpg",
     studyDuration: "4 months"
   },
   {
     id: "2",
-    name: "Rahul Patel",
+    name: "Michael Anderson",
     examType: "CPA",
     scoreImprovement: "+42%",
     previousScore: 58,
     finalScore: 100,
     text: "The structured approach and adaptive scheduling made all the difference. I went from struggling with mock tests to scoring 100% in my final exam. The Learning Path feature is a game-changer.",
-    image: "/avatars/rahul.jpg",
+    image: "https://randomuser.me/api/portraits/men/2.jpg",
     studyDuration: "6 months"
   },
   {
     id: "3",
-    name: "Anita Kumar",
+    name: "Sarah Wilson",
     examType: "ACCA",
     scoreImprovement: "+28%",
     previousScore: 62,
     finalScore: 90,
     text: "What impressed me most was how the platform adapted to my learning style. The weekly plans were realistic, and the progress tracking kept me motivated throughout my preparation journey.",
-    image: "/avatars/anita.jpg",
+    image: "https://randomuser.me/api/portraits/women/3.jpg",
     studyDuration: "5 months"
   },
   {
     id: "4",
-    name: "Vikram Singh",
+    name: "James Miller",
     examType: "FRM",
     scoreImprovement: "+38%",
     previousScore: 52,
     finalScore: 90,
     text: "The AI-powered difficulty analysis helped me focus on the right topics at the right time. I cleared my FRM exam on the first attempt with a score I never thought was possible.",
-    image: "/avatars/vikram.jpg",
+    image: "https://randomuser.me/api/portraits/men/4.jpg",
     studyDuration: "7 months"
   }
 ];

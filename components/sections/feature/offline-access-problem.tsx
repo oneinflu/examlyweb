@@ -32,21 +32,21 @@ export default function OfflineAccessProblem() {
       title: "Poor connectivity breaks focus during live sessions",
       description: "Buffering, lag, and connection drops interrupt your learning flow and cause frustration",
       impact: "40% session time lost",
-      color: "text-red-500"
+      color: "text-[#CEAE2D]"
     },
     {
       icon: Clock,
       title: "Wasted time during commutes and travel",
       description: "Hours of potential study time lost because you can't access your materials without internet",
       impact: "10+ hours weekly",
-      color: "text-orange-500"
+      color: "text-[#CEAE2D]"
     },
     {
       icon: BookOpen,
       title: "No way to revise notes without Wi-Fi/data",
       description: "Critical review sessions become impossible when you're in areas with poor or no connectivity",
       impact: "50% revision missed",
-      color: "text-yellow-500"
+      color: "text-[#CEAE2D]"
     }
   ];
 
@@ -55,12 +55,12 @@ export default function OfflineAccessProblem() {
       <div className="container max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4 bg-red-50 border-red-200 text-red-700 dark:bg-red-950 dark:border-red-800 dark:text-red-300">
+          <Badge variant="outline" className="mb-4 bg-[#CEAE2D]/5 border-[#CEAE2D]/20 text-[#CEAE2D] dark:bg-[#CEAE2D]/10 dark:border-[#CEAE2D]/30 dark:text-[#CEAE2D]/80">
             <AlertTriangle className="w-3 h-3 mr-1" />
             The Connectivity Problem
           </Badge>
           <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-            The Internet Shouldn&apos;t Decide <span className="text-red-500">When You Can Study</span>
+            The Internet Shouldn&apos;t Decide <span className="text-[#CEAE2D]">When You Can Study</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Don&apos;t let poor connectivity or data limitations hold back your exam preparation. 
@@ -76,25 +76,25 @@ export default function OfflineAccessProblem() {
               <Card 
                 key={index}
                 className={`p-6 transition-all duration-300 cursor-pointer group hover:shadow-lg ${
-                  hoveredPain === index ? 'border-red-300 shadow-lg shadow-red-100 dark:shadow-red-900/20' : ''
+                  hoveredPain === index ? 'border-[#CEAE2D]/30 shadow-lg shadow-[#CEAE2D]/10 dark:shadow-[#CEAE2D]/20' : ''
                 }`}
                 onMouseEnter={() => setHoveredPain(index)}
                 onMouseLeave={() => setHoveredPain(null)}
               >
                 <div className="flex items-start gap-4">
-                  <div className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-red-50 dark:bg-red-950/30 group-hover:scale-110 transition-transform duration-200`}>
+                  <div className={`flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-[#CEAE2D]/5 dark:bg-[#CEAE2D]/10 group-hover:scale-110 transition-transform duration-200`}>
                     <IconComponent className={`w-6 h-6 ${pain.color}`} />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-lg mb-2 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors duration-200">
+                    <h3 className="font-semibold text-lg mb-2 group-hover:text-[#CEAE2D] dark:group-hover:text-[#CEAE2D]/80 transition-colors duration-200">
                       {pain.title}
                     </h3>
                     <p className="text-muted-foreground mb-3 leading-relaxed">
                       {pain.description}
                     </p>
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-red-100 dark:bg-red-950/50 rounded-full">
-                      <div className="w-2 h-2 bg-red-500 rounded-full" />
-                      <span className="text-sm font-medium text-red-700 dark:text-red-300">{pain.impact}</span>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#CEAE2D]/10 dark:bg-[#CEAE2D]/20 rounded-full">
+                      <div className="w-2 h-2 bg-[#CEAE2D] rounded-full" />
+                      <span className="text-sm font-medium text-[#CEAE2D] dark:text-[#CEAE2D]/80">{pain.impact}</span>
                     </div>
                   </div>
                 </div>
@@ -106,94 +106,94 @@ export default function OfflineAccessProblem() {
         {/* Side-by-Side Comparison */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           {/* Frustrated Student - Online Dependent */}
-          <Card className="p-8 border-red-200 bg-red-50/50 dark:bg-red-950/20 dark:border-red-800">
+          <Card className="p-8 border-[#CEAE2D]/20 bg-[#CEAE2D]/5 dark:bg-[#CEAE2D]/10 dark:border-[#CEAE2D]/30">
             <div className="text-center mb-6">
-              <div className="w-16 h-16 bg-red-100 dark:bg-red-950 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Frown className="w-8 h-8 text-red-500" />
+              <div className="w-16 h-16 bg-[#CEAE2D]/10 dark:bg-[#CEAE2D]/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Frown className="w-8 h-8 text-[#CEAE2D]" />
               </div>
-              <h3 className="text-xl font-semibold text-red-700 dark:text-red-300 mb-2">Online-Dependent Student</h3>
-              <p className="text-red-600 dark:text-red-400 text-sm">Struggling with connectivity issues</p>
+              <h3 className="text-xl font-semibold text-[#CEAE2D] dark:text-[#CEAE2D]/80 mb-2">Online-Dependent Student</h3>
+              <p className="text-[#CEAE2D]/80 dark:text-[#CEAE2D]/60 text-sm">Struggling with connectivity issues</p>
             </div>
 
             {/* Scenario Visualization */}
             <div className="space-y-4 mb-6">
-              <div className="flex items-center gap-3 p-3 bg-white dark:bg-red-950/30 rounded-lg border border-red-200 dark:border-red-800">
-                <SignalLow className="w-5 h-5 text-red-500" />
+              <div className="flex items-center gap-3 p-3 bg-white dark:bg-[#CEAE2D]/10 rounded-lg border border-[#CEAE2D]/20 dark:border-[#CEAE2D]/30">
+                <SignalLow className="w-5 h-5 text-[#CEAE2D]" />
                 <div className="flex-1">
-                  <div className="text-sm font-medium text-red-700 dark:text-red-300">Poor Signal Area</div>
-                  <div className="text-xs text-red-600 dark:text-red-400">Can&apos;t access study materials</div>
+                  <div className="text-sm font-medium text-[#CEAE2D] dark:text-[#CEAE2D]/80">Poor Signal Area</div>
+                  <div className="text-xs text-[#CEAE2D]/80 dark:text-[#CEAE2D]/60">Can&apos;t access study materials</div>
                 </div>
-                <X className="w-4 h-4 text-red-500" />
+                <X className="w-4 h-4 text-[#CEAE2D]" />
               </div>
 
-              <div className="flex items-center gap-3 p-3 bg-white dark:bg-red-950/30 rounded-lg border border-red-200 dark:border-red-800">
-                <Train className="w-5 h-5 text-red-500" />
+              <div className="flex items-center gap-3 p-3 bg-white dark:bg-[#CEAE2D]/10 rounded-lg border border-[#CEAE2D]/20 dark:border-[#CEAE2D]/30">
+                <Train className="w-5 h-5 text-[#CEAE2D]" />
                 <div className="flex-1">
-                  <div className="text-sm font-medium text-red-700 dark:text-red-300">Commute Time</div>
-                  <div className="text-xs text-red-600 dark:text-red-400">2 hours daily - completely wasted</div>
+                  <div className="text-sm font-medium text-[#CEAE2D] dark:text-[#CEAE2D]/80">Commute Time</div>
+                  <div className="text-xs text-[#CEAE2D]/80 dark:text-[#CEAE2D]/60">2 hours daily - completely wasted</div>
                 </div>
-                <X className="w-4 h-4 text-red-500" />
+                <X className="w-4 h-4 text-[#CEAE2D]" />
               </div>
 
-              <div className="flex items-center gap-3 p-3 bg-white dark:bg-red-950/30 rounded-lg border border-red-200 dark:border-red-800">
-                <WifiOff className="w-5 h-5 text-red-500" />
+              <div className="flex items-center gap-3 p-3 bg-white dark:bg-[#CEAE2D]/10 rounded-lg border border-[#CEAE2D]/20 dark:border-[#CEAE2D]/30">
+                <WifiOff className="w-5 h-5 text-[#CEAE2D]" />
                 <div className="flex-1">
-                  <div className="text-sm font-medium text-red-700 dark:text-red-300">No Internet Access</div>
-                  <div className="text-xs text-red-600 dark:text-red-400">Can&apos;t review notes or practice</div>
+                  <div className="text-sm font-medium text-[#CEAE2D] dark:text-[#CEAE2D]/80">No Internet Access</div>
+                  <div className="text-xs text-[#CEAE2D]/80 dark:text-[#CEAE2D]/60">Can&apos;t review notes or practice</div>
                 </div>
-                <X className="w-4 h-4 text-red-500" />
+                <X className="w-4 h-4 text-[#CEAE2D]" />
               </div>
             </div>
 
-            <div className="text-center p-4 bg-red-100 dark:bg-red-950/50 rounded-lg">
-              <div className="text-sm font-medium text-red-700 dark:text-red-300">Result: Inconsistent preparation</div>
-              <div className="text-xs text-red-600 dark:text-red-400 mt-1">Stress, gaps in learning, poor performance</div>
+            <div className="text-center p-4 bg-[#CEAE2D]/10 dark:bg-[#CEAE2D]/20 rounded-lg">
+              <div className="text-sm font-medium text-[#CEAE2D] dark:text-[#CEAE2D]/80">Result: Inconsistent preparation</div>
+              <div className="text-xs text-[#CEAE2D]/80 dark:text-[#CEAE2D]/60 mt-1">Stress, gaps in learning, poor performance</div>
             </div>
           </Card>
 
           {/* Happy Student - Offline Capable */}
-          <Card className="p-8 border-green-200 bg-green-50/50 dark:bg-green-950/20 dark:border-green-800">
+          <Card className="p-8 border-primary/20 bg-primary/5 dark:bg-primary/10 dark:border-primary/30">
             <div className="text-center mb-6">
-              <div className="w-16 h-16 bg-green-100 dark:bg-green-950 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Smile className="w-8 h-8 text-green-500" />
+              <div className="w-16 h-16 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Smile className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="text-xl font-semibold text-green-700 dark:text-green-300 mb-2">Offline-Ready Student</h3>
-              <p className="text-green-600 dark:text-green-400 text-sm">Learning anywhere, anytime</p>
+              <h3 className="text-xl font-semibold text-primary dark:text-primary/80 mb-2">Offline-Ready Student</h3>
+              <p className="text-primary/80 dark:text-primary/60 text-sm">Learning anywhere, anytime</p>
             </div>
 
             {/* Scenario Visualization */}
             <div className="space-y-4 mb-6">
-              <div className="flex items-center gap-3 p-3 bg-white dark:bg-green-950/30 rounded-lg border border-green-200 dark:border-green-800">
-                <Download className="w-5 h-5 text-green-500" />
+              <div className="flex items-center gap-3 p-3 bg-white dark:bg-primary/10 rounded-lg border border-primary/20 dark:border-primary/30">
+                <Download className="w-5 h-5 text-primary" />
                 <div className="flex-1">
-                  <div className="text-sm font-medium text-green-700 dark:text-green-300">Pre-Downloaded Content</div>
-                  <div className="text-xs text-green-600 dark:text-green-400">All materials available offline</div>
+                  <div className="text-sm font-medium text-primary dark:text-primary/80">Pre-Downloaded Content</div>
+                  <div className="text-xs text-primary/80 dark:text-primary/60">All materials available offline</div>
                 </div>
-                <CheckCircle className="w-4 h-4 text-green-500" />
+                <CheckCircle className="w-4 h-4 text-primary" />
               </div>
 
-              <div className="flex items-center gap-3 p-3 bg-white dark:bg-green-950/30 rounded-lg border border-green-200 dark:border-green-800">
-                <Train className="w-5 h-5 text-green-500" />
+              <div className="flex items-center gap-3 p-3 bg-white dark:bg-primary/10 rounded-lg border border-primary/20 dark:border-primary/30">
+                <Train className="w-5 h-5 text-primary" />
                 <div className="flex-1">
-                  <div className="text-sm font-medium text-green-700 dark:text-green-300">Productive Commute</div>
-                  <div className="text-xs text-green-600 dark:text-green-400">2 hours daily - fully utilized</div>
+                  <div className="text-sm font-medium text-primary dark:text-primary/80">Productive Commute</div>
+                  <div className="text-xs text-primary/80 dark:text-primary/60">2 hours daily - fully utilized</div>
                 </div>
-                <CheckCircle className="w-4 h-4 text-green-500" />
+                <CheckCircle className="w-4 h-4 text-primary" />
               </div>
 
-              <div className="flex items-center gap-3 p-3 bg-white dark:bg-green-950/30 rounded-lg border border-green-200 dark:border-green-800">
-                <BookOpen className="w-5 h-5 text-green-500" />
+              <div className="flex items-center gap-3 p-3 bg-white dark:bg-primary/10 rounded-lg border border-primary/20 dark:border-primary/30">
+                <BookOpen className="w-5 h-5 text-primary" />
                 <div className="flex-1">
-                  <div className="text-sm font-medium text-green-700 dark:text-green-300">Offline Study Sessions</div>
-                  <div className="text-xs text-green-600 dark:text-green-400">Notes, tests, videos - all accessible</div>
+                  <div className="text-sm font-medium text-primary dark:text-primary/80">Offline Study Sessions</div>
+                  <div className="text-xs text-primary/80 dark:text-primary/60">Notes, tests, videos - all accessible</div>
                 </div>
-                <CheckCircle className="w-4 h-4 text-green-500" />
+                <CheckCircle className="w-4 h-4 text-primary" />
               </div>
             </div>
 
-            <div className="text-center p-4 bg-green-100 dark:bg-green-950/50 rounded-lg">
-              <div className="text-sm font-medium text-green-700 dark:text-green-300">Result: Consistent, flexible learning</div>
-              <div className="text-xs text-green-600 dark:text-green-400 mt-1">Better preparation, reduced stress, higher scores</div>
+            <div className="text-center p-4 bg-primary/10 dark:bg-primary/20 rounded-lg">
+              <div className="text-sm font-medium text-primary dark:text-primary/80">Result: Consistent, flexible learning</div>
+              <div className="text-xs text-primary/80 dark:text-primary/60 mt-1">Better preparation, reduced stress, higher scores</div>
             </div>
           </Card>
         </div>

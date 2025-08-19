@@ -27,21 +27,21 @@ export default function ProblemSection() {
       title: "No clear structure",
       description: "Waste time deciding what to study",
       impact: "3-4 hours lost weekly",
-      color: "text-red-500"
+      color: "text-[#CEAE2D]"
     },
     {
       icon: BrainIcon,
       title: "Forgetting to revise",
       description: "Important topics slip through the cracks",
       impact: "40% knowledge retention loss",
-      color: "text-orange-500"
+      color: "text-[#CEAE2D]"
     },
     {
       icon: HelpCircleIcon,
       title: "Getting stuck without help",
       description: "Difficult areas become roadblocks",
       impact: "2x longer study time",
-      color: "text-yellow-500"
+      color: "text-[#CEAE2D]"
     }
   ];
 
@@ -68,12 +68,12 @@ export default function ProblemSection() {
       <div className="container max-w-container mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <Badge variant="outline" className="mb-4 bg-red-50 border-red-200 text-red-700 dark:bg-red-950 dark:border-red-800 dark:text-red-300">
+          <Badge variant="outline" className="mb-4 bg-[#CEAE2D]/5 border-[#CEAE2D] text-[#CEAE2D] dark:bg-[#CEAE2D]/10 dark:border-[#CEAE2D] dark:text-[#CEAE2D]">
             <AlertTriangleIcon className="w-3 h-3 mr-1" />
             The Reality Check
           </Badge>
           <h2 className="text-3xl lg:text-5xl font-bold mb-6">
-            Why Most Students <span className="text-red-500">Struggle</span>
+            Why Most Students <span className="text-[#CEAE2D]">Struggle</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Without a structured approach, even the most dedicated students find themselves 
@@ -89,24 +89,24 @@ export default function ProblemSection() {
               <Card 
                 key={index}
                 className={`p-6 transition-all duration-300 cursor-pointer group hover:shadow-lg ${
-                  hoveredPain === index ? 'border-red-300 shadow-lg shadow-red-100 dark:shadow-red-900/20' : ''
+                  hoveredPain === index ? 'border-[#CEAE2D] shadow-lg shadow-[#CEAE2D]/10 dark:shadow-[#CEAE2D]/20' : ''
                 }`}
                 onMouseEnter={() => setHoveredPain(index)}
                 onMouseLeave={() => setHoveredPain(null)}
               >
                 <div className="flex items-start gap-4">
-                  <div className={`flex-shrink-0 w-12 h-12 rounded-full bg-red-50 dark:bg-red-950 flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
+                  <div className={`flex-shrink-0 w-12 h-12 rounded-full bg-[#CEAE2D]/5 dark:bg-[#CEAE2D]/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
                     <IconComponent className={`w-6 h-6 ${pain.color}`} />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="font-semibold text-lg group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                    <h3 className="font-semibold text-lg group-hover:text-[#CEAE2D] dark:group-hover:text-[#CEAE2D] transition-colors">
                       {pain.title}
                     </h3>
                     <p className="text-muted-foreground">
                       {pain.description}
                     </p>
                     <div className="flex items-center gap-2">
-                      <Badge variant="outline" className="text-xs bg-red-50 border-red-200 text-red-700 dark:bg-red-950 dark:border-red-800">
+                      <Badge variant="outline" className="text-xs bg-[#CEAE2D]/5 border-[#CEAE2D] text-[#CEAE2D] dark:bg-[#CEAE2D]/10 dark:border-[#CEAE2D]">
                         Impact: {pain.impact}
                       </Badge>
                     </div>
@@ -131,7 +131,7 @@ export default function ProblemSection() {
                 onClick={() => setActiveTab('messy')}
                 className={`px-6 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                   activeTab === 'messy' 
-                    ? 'bg-red-500 text-white shadow-sm' 
+                    ? 'bg-[#CEAE2D] text-white shadow-sm' 
                     : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
@@ -154,14 +154,14 @@ export default function ProblemSection() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Messy Schedule */}
             <Card className={`p-6 transition-all duration-500 ${
-              activeTab === 'messy' ? 'ring-2 ring-red-200 shadow-lg' : 'opacity-50'
+              activeTab === 'messy' ? 'ring-2 ring-[#CEAE2D] shadow-lg' : 'opacity-50'
             }`}>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 bg-red-100 dark:bg-red-950 rounded-full flex items-center justify-center">
-                  <XIcon className="w-4 h-4 text-red-500" />
+                <div className="w-8 h-8 bg-[#CEAE2D]/10 dark:bg-[#CEAE2D]/20 rounded-full flex items-center justify-center">
+                  <XIcon className="w-4 h-4 text-[#CEAE2D]" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-red-600 dark:text-red-400">Self-Made Schedule</h4>
+                  <h4 className="font-semibold text-[#CEAE2D] dark:text-[#CEAE2D]">Self-Made Schedule</h4>
                   <p className="text-sm text-muted-foreground">Unstructured & Inefficient</p>
                 </div>
               </div>
@@ -170,22 +170,22 @@ export default function ProblemSection() {
                 {messyScheduleItems.map((item, index) => (
                   <div 
                     key={index} 
-                    className="flex items-center gap-3 p-3 rounded-lg bg-red-50/50 dark:bg-red-950/20 border border-red-100 dark:border-red-900"
+                    className="flex items-center gap-3 p-3 rounded-lg bg-[#CEAE2D]/5 dark:bg-[#CEAE2D]/10 border border-[#CEAE2D]/20 dark:border-[#CEAE2D]/30"
                   >
                     <div className="text-sm font-mono text-muted-foreground min-w-[70px]">
                       {item.time}
                     </div>
                     <div className="flex-1">
                       <div className="text-sm">{item.task}</div>
-                      <div className="text-xs text-red-500 capitalize">{item.status}</div>
+                      <div className="text-xs text-[#CEAE2D] capitalize">{item.status}</div>
                     </div>
-                    <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse" />
+                    <div className="w-2 h-2 bg-[#CEAE2D] rounded-full animate-pulse" />
                   </div>
                 ))}
               </div>
               
-              <div className="mt-6 p-4 bg-red-50 dark:bg-red-950/30 rounded-lg border border-red-200 dark:border-red-800">
-                <div className="flex items-center gap-2 text-red-600 dark:text-red-400">
+              <div className="mt-6 p-4 bg-[#CEAE2D]/5 dark:bg-[#CEAE2D]/10 rounded-lg border border-[#CEAE2D] dark:border-[#CEAE2D]">
+                <div className="flex items-center gap-2 text-[#CEAE2D] dark:text-[#CEAE2D]">
                   <AlertTriangleIcon className="w-4 h-4" />
                   <span className="text-sm font-medium">Result: 30% efficiency, high stress</span>
                 </div>

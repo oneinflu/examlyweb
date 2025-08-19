@@ -46,11 +46,7 @@ export default function Navigation() {
   return (
     <NavigationMenu className="hidden md:flex">
       <NavigationMenuList>
-         <NavigationMenuItem>
-          <NavigationMenuLink href="/" className={navigationMenuTriggerStyle()}>
-            Home
-          </NavigationMenuLink>
-        </NavigationMenuItem>
+         
         <NavigationMenuItem>
           <NavigationMenuTrigger>Exam Prep</NavigationMenuTrigger>
           <NavigationMenuContent>

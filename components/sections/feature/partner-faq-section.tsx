@@ -172,14 +172,7 @@ export default function PartnerFAQSection() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-16 text-center">
-          <p className="text-muted-foreground mb-4">
-            Have more questions about partnering with Examly?
-          </p>
-          <Button className="bg-primary hover:bg-primary/90 text-white">
-            Contact Our Partner Team
-          </Button>
-        </div>
+     
       </div>
     </Section>
   );

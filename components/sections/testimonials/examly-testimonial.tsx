@@ -4,7 +4,8 @@ import { useState } from "react";
 import { Section } from "../../ui/section";
 import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 import { Button } from "../../ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -95,13 +96,20 @@ export default function ExamlyTestimonial() {
             >
               <ChevronLeft className="h-5 w-5" />
             </Button>
+          
             <Button
               variant="default"
               size="sm"
               onClick={nextTestimonial}
               className="rounded-full w-12 h-12 p-0 bg-black hover:bg-gray-800"
             >
-              <ChevronRight className="h-5 w-5 text-white" />
+              <Image 
+                src="/arrow.svg" 
+                alt="Arrow right" 
+                width={20} 
+                height={20} 
+                className="h-5 w-5 text-white" 
+              />
             </Button>
           </div>
         </div>

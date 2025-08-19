@@ -30,7 +30,7 @@ const comparisons: ComparisonItem[] = [
       title: "Missed Topics",
       description: "Random study approach leads to gaps in syllabus coverage and important topics being overlooked",
       icon: X,
-      color: "text-red-500"
+      color: "text-[#CEAE2D]"
     },
     with: {
       title: "100% Syllabus Coverage",
@@ -45,7 +45,7 @@ const comparisons: ComparisonItem[] = [
       title: "No Time for Revision",
       description: "Poor time management leaves no buffer for revision, leading to cramming before exams",
       icon: AlertTriangle,
-      color: "text-red-500"
+      color: "text-[#CEAE2D]"
     },
     with: {
       title: "Strategic Revision Days",
@@ -60,7 +60,7 @@ const comparisons: ComparisonItem[] = [
       title: "Low Mock Scores",
       description: "Inconsistent preparation leads to poor performance in practice tests and low confidence",
       icon: X,
-      color: "text-red-500"
+      color: "text-[#CEAE2D]"
     },
     with: {
       title: "Gradual Score Improvement",
@@ -75,7 +75,7 @@ const comparisons: ComparisonItem[] = [
       title: "Stress Before Exams",
       description: "Uncertainty about preparation level creates anxiety and affects exam day performance",
       icon: AlertTriangle,
-      color: "text-red-500"
+      color: "text-[#CEAE2D]"
     },
     with: {
       title: "Clear, Confident Plan",
@@ -105,7 +105,7 @@ export default function BeforeAfterSection() {
           {/* Header Row */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="text-center">
-              <Badge variant="outline" className="mb-4 text-sm px-4 py-2 text-red">
+              <Badge variant="outline" className="mb-4 text-sm px-4 py-2 text-[#CEAE2D]">
                 Without Learning Path
               </Badge>
               <h3 className="text-xl font-semibold text-muted-foreground">
@@ -130,15 +130,15 @@ export default function BeforeAfterSection() {
             return (
               <div key={comparison.id} className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Without Learning Path */}
-                <Card className="p-6 glass-2 border-red-200/20 hover:glass-3 transition-all duration-300">
+                <Card className="p-6 glass-2 border-[#CEAE2D]/20 hover:glass-3 transition-all duration-300">
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0">
-                      <div className="p-3 rounded-full bg-red-50 dark:bg-red-950/20">
+                      <div className="p-3 rounded-full bg-[#CEAE2D]/10 dark:bg-[#CEAE2D]/5">
                         <WithoutIcon className={`h-6 w-6 ${comparison.without.color}`} />
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-lg mb-2 text-red-600 dark:text-red-400">
+                      <h4 className="font-semibold text-lg mb-2 text-[#CEAE2D] dark:text-[#CEAE2D]/80">
                         {comparison.without.title}
                       </h4>
                       <p className="text-muted-foreground leading-relaxed">
@@ -174,7 +174,7 @@ export default function BeforeAfterSection() {
         {/* Visual Separator */}
         <div className="flex items-center justify-center my-12">
           <div className="flex items-center gap-4">
-            <div className="h-px bg-gradient-to-r from-transparent via-red-300 to-transparent w-24"></div>
+            <div className="h-px bg-gradient-to-r from-transparent via-[#CEAE2D]/30 to-transparent w-24"></div>
             <div className="text-2xl font-bold text-muted-foreground">VS</div>
             <div className="h-px bg-gradient-to-r from-transparent via-emerald-300 to-transparent w-24"></div>
           </div>
@@ -183,7 +183,7 @@ export default function BeforeAfterSection() {
         {/* Bottom Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
           <Card className="p-6 text-center glass-2 border-0">
-            <div className="text-3xl font-bold text-red-500 mb-2">65%</div>
+            <div className="text-3xl font-bold text-[#CEAE2D] mb-2">65%</div>
             <div className="text-sm text-muted-foreground">
               Students struggle without structured plans
             </div>

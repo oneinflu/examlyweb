@@ -11,13 +11,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { 
   ChevronLeft, 
-  ChevronRight, 
   Star, 
   TrendingUp, 
+  // Remove ChevronRight import
   Award, 
   Users, 
   CheckCircle,
-  Quote
+  Quote,
+  ChevronRight
 } from "lucide-react";
 
 interface SuccessStoriesProps {
@@ -372,6 +373,7 @@ export default function SuccessStories({
         
         {/* View All Link */}
         <div className="text-center">
+        
           <Button 
             variant="outline" 
             className="border-brand-emerald/20 text-brand-emerald hover:bg-brand-emerald/5"
@@ -379,7 +381,13 @@ export default function SuccessStories({
           >
             <Link href="/success-stories">
               <span>View All Success Stories</span>
-              <ChevronRight className="ml-2 h-4 w-4" />
+              <Image 
+                src="/arrow.svg" 
+                alt="Arrow right" 
+                width={16} 
+                height={16} 
+                className="ml-2 h-4 w-4" 
+              />
             </Link>
           </Button>
         </div>
