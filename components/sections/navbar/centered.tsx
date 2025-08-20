@@ -197,12 +197,43 @@ export default function Navbar({
                       )}
                     </div>
 
-                    <Link href="/why-examly" className="text-muted-foreground hover:text-foreground">
+                    {/* Solutions For Section */}
+                    <div className="space-y-4">
+                      <button 
+                        onClick={() => toggleSection('solutions')} 
+                        className="flex items-center justify-between w-full font-semibold"
+                      >
+                        <span>Solutions For</span>
+                        <span className="text-sm">{openSection === 'solutions' ? '−' : '+'}</span>
+                      </button>
+                      {openSection === 'solutions' && (
+                        <div className="grid gap-3 pl-3">
+                          <div className="space-y-1">
+                            <Link href="/become-reseller" className="text-muted-foreground hover:text-foreground block font-medium">
+                              For Resellers
+                            </Link>
+                            <p className="text-sm text-muted-foreground">Partner with us to resell our exam prep solutions</p>
+                          </div>
+                          <div className="space-y-1">
+                            <Link href="/become-partner" className="text-muted-foreground hover:text-foreground block font-medium">
+                              For Partners
+                            </Link>
+                            <p className="text-sm text-muted-foreground">Collaborate to create and deliver exam content</p>
+                          </div>
+                          <div className="space-y-1">
+                            <Link href="/become-institute-partner" className="text-muted-foreground hover:text-foreground block font-medium">
+                              For Institutes
+                            </Link>
+                            <p className="text-sm text-muted-foreground">Empower your students with our exam prep platform</p>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    <Link href="/why-examly" className="text-foreground hover:text-foreground">
                       Why Examly
                     </Link>
-                    <Link href="/become-partner" className="text-muted-foreground hover:text-foreground">
-                      Become a Partner
-                    </Link>
+                 
                   </nav>
                 </SheetContent>
               </Sheet>

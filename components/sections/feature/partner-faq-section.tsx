@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
+import { usePathname } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import {
   Accordion,
@@ -7,63 +9,108 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion-raised";
-import { HelpCircle, Package, Sliders, Shield, HeadphonesIcon, ArrowUpCircle, BookOpen } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { HelpCircle, Package, Sliders, Shield, HeadphonesIcon, ArrowUpCircle, BookOpen, Box, CalendarDays } from "lucide-react";
 
 interface FAQItem {
   id: string;
   question: string;
   answer: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon: React.ComponentType<any>;
-  category: 'onboarding' | 'customization' | 'security' | 'support' | 'plans' | 'resources';
+  category: 'onboarding' | 'customization' | 'security' | 'support' | 'plans' | 'resources' | 'inventory' | 'schedule';
 }
 
-// Partner FAQ Items
-const partnerFAQs: FAQItem[] = [
-  {
-    id: "onboarding",
-    question: "What does onboarding include?",
-    answer: "Our comprehensive onboarding process includes dedicated setup assistance, staff training sessions, data migration support, and a personalized implementation plan. We'll guide you through every step from initial account setup to your first student cohort launch. Our team will work closely with yours to ensure a smooth transition and quick time-to-value.",
-    icon: Package,
-    category: 'onboarding'
-  },
-  {
-    id: "customization",
-    question: "Can I customize homework & reports?",
-    answer: "Absolutely! Examly offers extensive customization options for both homework assignments and performance reports. You can tailor assignments to match your teaching methodology, adjust difficulty levels, set custom deadlines, and even create branded report templates. Our platform allows you to configure automated reports with the metrics that matter most to your coaching business.",
-    icon: Sliders,
-    category: 'customization'
-  },
-  {
-    id: "security",
-    question: "How secure is student data?",
-    answer: "We take data security extremely seriously. Examly employs industry-leading encryption standards, regular security audits, and strict access controls to protect all student information. We're fully compliant with relevant data protection regulations and maintain a comprehensive data retention policy. Your students' data is never shared with third parties without explicit consent.",
-    icon: Shield,
-    category: 'security'
-  },
-  {
-    id: "support",
-    question: "What support do partners get?",
-    answer: "Partners receive priority access to our dedicated support team via multiple channels including email, chat, and scheduled calls. You'll be assigned a dedicated Partner Success Manager who provides regular check-ins, performance reviews, and strategic guidance. We also offer extended technical support hours and emergency assistance for critical issues.",
-    icon: HeadphonesIcon,
-    category: 'support'
-  },
-  {
-    id: "plans",
-    question: "How easy is it to upgrade plans?",
-    answer: "Upgrading your plan is seamless and can be done at any time through your partner dashboard. When you upgrade, new features and capacity increases are instantly available. We offer flexible billing options including monthly, quarterly, or annual payment schedules with discounts for longer commitments. There's no downtime during upgrades, and your existing data and configurations remain intact.",
-    icon: ArrowUpCircle,
-    category: 'plans'
-  },
-  {
-    id: "resources",
-    question: "What learning resources are available?",
-    answer: "We provide a comprehensive library of learning resources for partners including video tutorials, detailed documentation, best practice guides, and regular webinars. Our Partner Knowledge Base contains searchable articles on all platform features, and we offer customized training sessions for your team. Additionally, you'll have access to our partner community forum to share experiences with other coaching centers.",
-    icon: BookOpen,
-    category: 'resources'
-  },
-];
+const faqsByType: Record<string, FAQItem[]> = {
+  "/become-reseller/": [
+    {
+      id: "inventory",
+      question: "How does inventory management work?",
+      answer: "Our inventory management system helps you track educational materials in real-time. You can monitor stock levels, set up automated alerts for low inventory, and generate detailed reports on resource distribution. The system integrates seamlessly with our order processing to ensure efficient fulfillment.",
+      icon: Box,
+      category: 'inventory'
+    },
+    {
+      id: "schedule",
+      question: "How flexible is the class scheduling?",
+      answer: "The class scheduling system is highly flexible, featuring drag-and-drop calendar management, automated student notifications, and recurring class setup. You can easily manage multiple batches, handle schedule changes, and sync with popular calendar applications.",
+      icon: CalendarDays,
+      category: 'schedule'
+    },
+    {
+      id: "support",
+      question: "What reseller support do you provide?",
+      answer: "Resellers receive dedicated support including sales training, marketing materials, and technical assistance. You'll have a dedicated Reseller Success Manager and access to 24/7 priority support for critical issues.",
+      icon: HeadphonesIcon,
+      category: 'support'
+    },
+    {
+      id: "onboarding",
+      question: "How does reseller onboarding work?",
+      answer: "Our reseller onboarding includes comprehensive training on inventory management, sales processes, and platform features. We provide step-by-step guidance for setting up your reseller account and integrating with your existing systems.",
+      icon: Package,
+      category: 'onboarding'
+    }
+  ],
+  "/become-partner/": [
+    {
+      id: "customization",
+      question: "Can I customize content and assessments?",
+      answer: "Yes! As a content partner, you have full control over content customization. Create custom assessments, modify existing content, and develop unique learning paths tailored to your expertise and teaching methodology.",
+      icon: Sliders,
+      category: 'customization'
+    },
+    {
+      id: "security",
+      question: "How is my content protected?",
+      answer: "We implement robust content protection measures including DRM, watermarking, and access controls. Your intellectual property is secured with industry-leading encryption and you retain full rights to your content.",
+      icon: Shield,
+      category: 'security'
+    },
+    {
+      id: "support",
+      question: "What support do content partners receive?",
+      answer: "Content partners get specialized support for content creation, publishing, and monetization. Our team assists with content strategy, quality assurance, and technical implementation.",
+      icon: HeadphonesIcon,
+      category: 'support'
+    },
+    {
+      id: "resources",
+      question: "What content creation tools are available?",
+      answer: "We provide a suite of content creation tools including rich media editors, assessment builders, and content analytics. You'll also have access to best practice guides and regular training sessions.",
+      icon: BookOpen,
+      category: 'resources'
+    }
+  ],
+  "/become-institute-partner/": [
+    {
+      id: "customization",
+      question: "How can I customize the learning experience?",
+      answer: "Institutes can fully customize the learning environment including branding, course structure, and assessment methods. Create custom learning paths, configure automated grading, and design institute-specific reports.",
+      icon: Sliders,
+      category: 'customization'
+    },
+    {
+      id: "security",
+      question: "How secure is student data?",
+      answer: "We maintain the highest standards of data security with end-to-end encryption, regular security audits, and strict access controls. All student data is protected in compliance with educational privacy regulations.",
+      icon: Shield,
+      category: 'security'
+    },
+    {
+      id: "support",
+      question: "What institute support is available?",
+      answer: "Institutes receive comprehensive support including dedicated account management, technical assistance, and faculty training. We provide regular check-ins and priority support for all institute-related queries.",
+      icon: HeadphonesIcon,
+      category: 'support'
+    },
+    {
+      id: "plans",
+      question: "Can we scale our institute plan?",
+      answer: "Yes, our institute plans are designed to scale with your growth. Easily upgrade to accommodate more students, add new features, or expand to multiple locations while maintaining seamless operations.",
+      icon: ArrowUpCircle,
+      category: 'plans'
+    }
+  ]
+};
 
 const categoryColors = {
   onboarding: 'text-brand-fire',
@@ -71,7 +118,9 @@ const categoryColors = {
   security: 'text-brand-electro',
   support: 'text-brand-ultraviolet',
   plans: 'text-brand-ember',
-  resources: 'text-brand-holo'
+  resources: 'text-brand-holo',
+  inventory: 'text-brand-fire',
+  schedule: 'text-brand-emerald'
 };
 
 const categoryLabels = {
@@ -80,33 +129,45 @@ const categoryLabels = {
   security: 'Security',
   support: 'Support',
   plans: 'Plans',
-  resources: 'Resources'
+  resources: 'Resources',
+  inventory: 'Inventory',
+  schedule: 'Schedule'
 };
 
 export default function PartnerFAQSection() {
+  const pathname = usePathname();
+  const cleanPathname = pathname.endsWith('/') ? pathname : `${pathname}/`;
+  const faqs = faqsByType[cleanPathname] || faqsByType["/become-partner/"];
+  
+  const midPoint = Math.ceil(faqs.length / 2);
+  const leftColumnFaqs = faqs.slice(0, midPoint);
+  const rightColumnFaqs = faqs.slice(midPoint);
+
   return (
     <Section className="py-16 sm:py-24">
       <div className="mx-auto max-w-container px-4">
-        {/* Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-2 mb-4">
             <HelpCircle className="h-8 w-8 text-brand-electro" />
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-              Partner FAQ
+              {cleanPathname === "/become-reseller/" ? "Reseller FAQ" :
+               cleanPathname === "/become-institute-partner/" ? "Institute Partner FAQ" :
+               "Content Partner FAQ"}
             </h2>
           </div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Common questions about becoming an Examly partner
+            {cleanPathname === "/become-reseller/" ? "Common questions about becoming an Examly reseller" :
+             cleanPathname === "/become-institute-partner/" ? "Common questions about becoming an institute partner" :
+             "Common questions about becoming a content partner"}
           </p>
         </div>
 
-        {/* FAQ Content - Two Column Layout for Desktop */}
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
             {/* Left Column */}
             <div className="space-y-4">
               <Accordion type="single" collapsible className="w-full space-y-4">
-                {partnerFAQs.slice(0, 3).map((item) => {
+                {leftColumnFaqs.map((item) => {
                   const IconComponent = item.icon;
                   return (
                     <AccordionItem key={item.id} value={item.id} className="border-0">
@@ -139,7 +200,7 @@ export default function PartnerFAQSection() {
             {/* Right Column */}
             <div className="space-y-4">
               <Accordion type="single" collapsible className="w-full space-y-4">
-                {partnerFAQs.slice(3, 6).map((item) => {
+                {rightColumnFaqs.map((item) => {
                   const IconComponent = item.icon;
                   return (
                     <AccordionItem key={item.id} value={item.id} className="border-0">
@@ -170,9 +231,6 @@ export default function PartnerFAQSection() {
             </div>
           </div>
         </div>
-
-        {/* Bottom CTA */}
-     
       </div>
     </Section>
   );

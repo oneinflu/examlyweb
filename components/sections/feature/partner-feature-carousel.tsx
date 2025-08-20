@@ -24,6 +24,8 @@ import {
 import Glow from "@/components/ui/glow";
 import { cn } from "@/lib/utils";
 import type { CarouselApi } from "@/components/ui/carousel";
+import { usePathname } from "next/navigation";
+import { Box } from "lucide-react";
 
 // Define the feature slides
 const featureSlides = [
@@ -89,10 +91,84 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
 
+// Define the feature slides based on partner type
+const getFeatureSlides = (pathname: string) => {
+  const commonFeatures = [
+    {
+      id: "student-management",
+      title: "Student & User Management",
+      description: "Organize your learners and team effortlessly.",
+      icon: Users,
+      bgGradient: "from-brand-ultraviolet/10 to-brand-emerald/10",
+      learnMoreId: "student-section"
+    },
+    {
+      id: "comprehensive-reports",
+      title: "Comprehensive Reports",
+      description: "Monitor performance, attendance, and more.",
+      icon: BarChart3,
+      bgGradient: "from-brand-ice/10 to-brand-ultraviolet/10",
+      learnMoreId: "reports-section"
+    },
+    {
+      id: "centralized-dashboard",
+      title: "Centralized Dashboard",
+      description: "Get real-time insights on your institute's health.",
+      icon: LayoutDashboard,
+      bgGradient: "from-brand-holo/10 to-brand-titanium/10",
+      learnMoreId: "dashboard-section"
+    }
+  ];
+
+  const resellerFeatures = [
+    {
+      id: "inventory-management",
+      title: "Inventory Management",
+      description: "Track and manage your educational resources efficiently.",
+      icon: Box,
+      bgGradient: "from-brand-titanium/10 to-brand-ice/10",
+      learnMoreId: "inventory-section",
+      highlights: [
+        "Real-time stock tracking",
+        "Automated reorder notifications",
+        "Resource allocation monitoring"
+      ]
+    },
+    {
+      id: "schedule-management",
+      title: "Class Schedule Management",
+      description: "Plan, reschedule & notify students in one click.",
+      icon: Calendar,
+      bgGradient: "from-brand-fire/10 to-brand-ember/10",
+      learnMoreId: "schedule-section"
+    }
+  ];
+
+  const partnerFeatures = [
+    {
+      id: "homework-assignments",
+      title: "Homework Assignments",
+      description: "Create, assign, and track submissions seamlessly.",
+      icon: FileText,
+      bgGradient: "from-brand-emerald/10 to-brand-fire/10",
+      learnMoreId: "homework-section"
+    }
+  ];
+
+  if (pathname === "/become-reseller/") {
+    return [...resellerFeatures, ...commonFeatures];
+  }
+
+  return [...partnerFeatures, ...commonFeatures];
+};
+
 export default function PartnerFeatureCarousel() {
+  const pathname = usePathname();
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [count, setCount] = useState(0);
+
+  const featureSlides = getFeatureSlides(pathname);
 
   useEffect(() => {
     if (!api) return;
@@ -115,7 +191,11 @@ export default function PartnerFeatureCarousel() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4 px-4 py-1.5 text-sm font-medium border-primary/30 text-primary">
-            Partner Features
+            {pathname === "/become-reseller/" 
+              ? "Reseller" 
+              : pathname === "/become-institute-partner/" 
+                ? "Institute" 
+                : "Partner"} Features
           </Badge>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
             Everything You Need to <span className="text-primary">Run Your Institute</span>
@@ -171,6 +251,10 @@ export default function PartnerFeatureCarousel() {
                                     <div className="w-2 h-2 rounded-full bg-primary"></div>
                                   </div>
                                   <span className="text-sm text-muted-foreground">
+                                    {slide.id === "inventory-management" && item === 1 && "Track educational materials and resources"}
+                                    {slide.id === "inventory-management" && item === 2 && "Automated low-stock alerts and reordering"}
+                                    {slide.id === "inventory-management" && item === 3 && "Resource distribution tracking"}
+                                    
                                     {slide.id === "schedule-management" && item === 1 && "Drag & drop calendar interface"}
                                     {slide.id === "schedule-management" && item === 2 && "Automatic student notifications"}
                                     {slide.id === "schedule-management" && item === 3 && "Recurring class scheduling"}

@@ -13,6 +13,7 @@ import {
   navigationMenuTriggerStyle,
 } from "./navigation-menu";
 import LaunchUI from "../logos/launch-ui";
+import { Handshake } from "lucide-react";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -46,7 +47,11 @@ export default function Navigation() {
   return (
     <NavigationMenu className="hidden md:flex">
       <NavigationMenuList>
-         
+           <NavigationMenuItem>
+          <NavigationMenuLink href="/why-examly" className={navigationMenuTriggerStyle()}>
+            Why Examly
+          </NavigationMenuLink>
+        </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Exam Prep</NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -96,16 +101,51 @@ export default function Navigation() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink href="/why-examly" className={navigationMenuTriggerStyle()}>
-            Why Examly
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink href="/become-partner" className={navigationMenuTriggerStyle()}>
-            Become a partner
-          </NavigationMenuLink>
-        </NavigationMenuItem>
+       <NavigationMenuItem>
+  <NavigationMenuTrigger>Solutions For</NavigationMenuTrigger>
+  <NavigationMenuContent>
+    <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+      <li className="row-span-3">
+        <NavigationMenuLink asChild>
+          <a
+            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/30 to-muted/10 p-6 no-underline outline-none focus:shadow-md"
+            href=""
+          >
+           <div className="flex items-center justify-center">
+                      <Handshake className="h-12 w-12 text-brand animate-bounce" />
+                    </div>
+            <div className="mb-2 mt-4 text-lg font-medium">
+              Solutions
+            </div>
+            <p className="text-sm leading-tight text-muted-foreground">
+              Tailored solutions for different types of partners and institutions.
+            </p>
+          </a>
+        </NavigationMenuLink>
+      </li>
+      <ListItem
+        title="For Resellers"
+        href="/become-reseller"
+      >
+        Partner with us to resell our exam prep solutions
+      </ListItem>
+      <ListItem
+        title="For Partners"
+        href="/become-partner"
+      >
+        Collaborate to create and deliver exam content
+      </ListItem>
+      <ListItem
+        title="For Institutes"
+        href="/become-institute-partner"
+      >
+        Empower your students with our exam prep platform
+      </ListItem>
+    </ul>
+  </NavigationMenuContent>
+</NavigationMenuItem>
+      
+      
       </NavigationMenuList>
     </NavigationMenu>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Section } from "@/components/ui/section";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -19,6 +20,7 @@ import {
 } from "lucide-react";
 
 export default function PartnerDemoScheduler() {
+  const pathname = usePathname();
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -64,7 +66,11 @@ export default function PartnerDemoScheduler() {
             See <span className="text-brand-electro">Examly</span> in Action
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Talk to our partner success team and see how Examly can transform your coaching
+            {pathname === "/become-reseller/"
+              ? "Connect with our reseller team and discover how Examly can expand your business reach"
+              : pathname === "/become-institute-partner/"
+                ? "Speak with our institute success team and see how Examly can enhance your educational offerings"
+                : "Talk to our partner success team and see how Examly can transform your coaching"}
           </p>
         </div>
 
@@ -255,7 +261,7 @@ export default function PartnerDemoScheduler() {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Call us at</p>
-                    <p className="font-medium">(+91) 98765-43210</p>
+                    <p className="font-medium">(855) 925-3699</p>
                   </div>
                 </div>
                 
@@ -265,7 +271,13 @@ export default function PartnerDemoScheduler() {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Email us at</p>
-                    <p className="font-medium">partners@examly.com</p>
+                    <p className="font-medium">
+                      {pathname === "/become-reseller/"
+                        ? "resellers@myexamly.com"
+                        : pathname === "/become-institute-partner/"
+                          ? "institutes@myexamly.com"
+                          : "partners@myexamly.com"}
+                    </p>
                   </div>
                 </div>
               </div>

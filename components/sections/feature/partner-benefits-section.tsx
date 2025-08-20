@@ -18,6 +18,7 @@ import {
   TrendingUpIcon,
   ShieldCheck
 } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 type Benefit = {
   icon: React.ComponentType<any>;
@@ -81,8 +82,131 @@ const partnerBenefits: Benefit[] = [
   }
 ];
 
+const resellerBenefits: Benefit[] = [
+  {
+    icon: Users,
+    title: "Expand Your Market Reach",
+    description: "Access new markets and grow your customer base with our platform",
+    color: "text-brand-fire",
+    bgColor: "bg-brand-fire/10",
+    borderColor: "border-brand-fire/20"
+  },
+  {
+    icon: CreditCard,
+    title: "Competitive Margins",
+    description: "Enjoy attractive profit margins and flexible pricing options",
+    color: "text-brand-emerald",
+    bgColor: "bg-brand-emerald/10",
+    borderColor: "border-brand-emerald/20",
+    stat: "25%+"
+  },
+  {
+    icon: HeadphonesIcon,
+    title: "Dedicated Support",
+    description: "Get priority support and training for your business needs",
+    color: "text-brand",
+    bgColor: "bg-brand/10",
+    borderColor: "border-brand/20"
+  },
+  {
+    icon: TrendingUpIcon,
+    title: "Business Analytics",
+    description: "Track sales, inventory, and performance with detailed insights",
+    color: "text-brand-ultraviolet",
+    bgColor: "bg-brand-ultraviolet/10",
+    borderColor: "border-brand-ultraviolet/20"
+  },
+  {
+    icon: SparklesIcon,
+    title: "Exclusive Products",
+    description: "Access to special inventory and promotional materials",
+    color: "text-brand-ember",
+    bgColor: "bg-brand-ember/10",
+    borderColor: "border-brand-ember/20"
+  },
+  {
+    icon: ShieldCheck,
+    title: "Secure Operations",
+    description: "Enterprise-grade security for all your business transactions",
+    color: "text-brand-electro",
+    bgColor: "bg-brand-electro/10",
+    borderColor: "border-brand-electro/20"
+  }
+];
+
+const instituteBenefits: Benefit[] = [
+  {
+    icon: Users,
+    title: "Enhanced Student Experience",
+    description: "Provide better learning outcomes with our comprehensive platform",
+    color: "text-brand-fire",
+    bgColor: "bg-brand-fire/10",
+    borderColor: "border-brand-fire/20"
+  },
+  {
+    icon: Clock,
+    title: "Streamlined Administration",
+    description: "Reduce administrative workload with automated systems",
+    color: "text-brand-emerald",
+    bgColor: "bg-brand-emerald/10",
+    borderColor: "border-brand-emerald/20",
+    stat: "40%+"
+  },
+  {
+    icon: HeadphonesIcon,
+    title: "Technical Support",
+    description: "24/7 support for all your institute's technical needs",
+    color: "text-brand",
+    bgColor: "bg-brand/10",
+    borderColor: "border-brand/20"
+  },
+  {
+    icon: TrendingUpIcon,
+    title: "Performance Analytics",
+    description: "Track student progress and institute growth metrics",
+    color: "text-brand-ultraviolet",
+    bgColor: "bg-brand-ultraviolet/10",
+    borderColor: "border-brand-ultraviolet/20"
+  },
+  {
+    icon: SparklesIcon,
+    title: "Custom Branding",
+    description: "Personalize the platform with your institute's branding",
+    color: "text-brand-ember",
+    bgColor: "bg-brand-ember/10",
+    borderColor: "border-brand-ember/20"
+  },
+  {
+    icon: ShieldCheck,
+    title: "Data Protection",
+    description: "Secure storage and handling of all educational data",
+    color: "text-brand-electro",
+    bgColor: "bg-brand-electro/10",
+    borderColor: "border-brand-electro/20"
+  }
+];
+
 export default function PartnerBenefitsSection() {
+  const pathname = usePathname();
   const [hoveredBenefit, setHoveredBenefit] = useState<number | null>(null);
+
+  const getBenefits = () => {
+    if (pathname === "/become-reseller/") {
+      return resellerBenefits;
+    } else if (pathname === "/become-institute-partner/") {
+      return instituteBenefits;
+    }
+    return partnerBenefits;
+  };
+
+  const getBadgeText = () => {
+    if (pathname === "/become-reseller/") {
+      return "Reseller Benefits";
+    } else if (pathname === "/become-institute-partner/") {
+      return "Institute Benefits";
+    }
+    return "Partner Benefits";
+  };
 
   return (
     <Section className="relative overflow-hidden py-20 lg:py-32">
@@ -96,7 +220,7 @@ export default function PartnerBenefitsSection() {
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-6 bg-brand/10 border-brand/20 text-brand">
             <Building2 className="w-4 h-4 mr-2" />
-            Partner Benefits
+            {getBadgeText()}
           </Badge>
           <h2 className="text-balance text-3xl font-semibold sm:text-5xl mb-6">
             Beyond Features — <span className="text-brand">Business Impact</span>
@@ -108,7 +232,7 @@ export default function PartnerBenefitsSection() {
 
         {/* Benefits Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {partnerBenefits.map((benefit, index) => {
+          {getBenefits().map((benefit, index) => {
             const Icon = benefit.icon;
             const isHovered = hoveredBenefit === index;
             
@@ -176,10 +300,18 @@ export default function PartnerBenefitsSection() {
               </div>
               <div className="text-left">
                 <h4 className="font-semibold text-brand mb-1">
-                  Ready to grow your coaching business?
+                  {pathname === "/become-reseller/" 
+                    ? "Ready to expand your business?"
+                    : pathname === "/become-institute-partner/"
+                      ? "Ready to transform your institute?"
+                      : "Ready to grow your coaching business?"}
                 </h4>
                 <p className="text-sm text-muted-foreground">
-                  Join our partner program today and experience these benefits firsthand
+                  {pathname === "/become-reseller/"
+                    ? "Join our reseller network today and unlock exclusive benefits"
+                    : pathname === "/become-institute-partner/"
+                      ? "Partner with us today and enhance your institute's capabilities"
+                      : "Join our partner program today and experience these benefits firsthand"}
                 </p>
               </div>
             </div>
