@@ -32,7 +32,7 @@ const studentTestimonials: StudentTestimonial[] = [
   {
     id: "1",
     name: "Emily Thompson",
-    examType: "CA Foundation",
+    examType: "CMA",
     scoreImprovement: "+35%",
     previousScore: 45,
     finalScore: 80,

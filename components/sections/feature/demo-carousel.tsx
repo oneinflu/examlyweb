@@ -339,7 +339,8 @@ export default function DemoCarousel({
                                     <div
                                       className={cn(
                                         "absolute z-30 w-64 p-4 bg-white border border-border rounded-lg shadow-xl",
-                                        "animate-in fade-in-0 zoom-in-95 duration-200"
+                                        "animate-in fade-in-0 zoom-in-95 duration-200",
+                                        "hidden md:block" // Hide on mobile, show on medium screens and up
                                       )}
                                       style={{
                                         left: `${hotspot.x}%`,

@@ -143,10 +143,8 @@ export default function Navbar({
                     <span className="sr-only">Toggle navigation menu</span>
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right">
-                  <nav className="grid gap-6 text-lg font-medium">
-                    
-                    
+                <SheetContent side="right" className="!p-0">
+                  <nav className="grid gap-6 text-lg font-medium p-6 pt-16">
                     {/* Mobile menu content */}
                     {/* Exam Prep Section */}
                     <div className="space-y-4">
